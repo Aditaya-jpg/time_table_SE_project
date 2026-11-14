@@ -2,11 +2,6 @@
 <%--
  * Punjab Engineering College (PEC) - Software Engineering Project
  * Constraint-Based Automated Timetable Scheduling System
- * Team Members:
- * - Nikhil Verma 24103048
- * - Paramvir Singh Saini 24103049
- * - Aditaya Singh 24103055
- * - Harman Singh 24103056
 --%>
 <%@ page import="org.unitime.timetable.util.Constants" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -17,60 +12,6 @@
 <style>
 	#unitime-Header, .unitime-PageHeader {
 		display: none !important;
-	}
-	.pec-team-badge-group {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		margin-top: 10px;
-	}
-	.pec-team-badge {
-		display: inline-flex;
-		align-items: center;
-		gap: 6px;
-		padding: 4px 12px;
-		border-radius: 980px;
-		font-size: 12px;
-		font-weight: 500;
-		background: var(--surface-tertiary);
-		color: var(--text-primary);
-		border: 0.5px solid var(--border-hairline);
-	}
-	.pec-team-badge svg {
-		color: var(--apple-blue);
-	}
-	.pec-case-study-card {
-		background: var(--surface-secondary);
-		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius-md);
-		padding: 18px 22px;
-		margin-top: 16px;
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
-	.pec-case-study-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 10px;
-	}
-	.pec-tag-blue {
-		background: var(--apple-blue-subtle);
-		color: var(--apple-blue);
-		padding: 2px 8px;
-		border-radius: 6px;
-		font-size: 11px;
-		font-weight: 600;
-	}
-	.pec-tag-green {
-		background: var(--apple-green-subtle);
-		color: var(--apple-green);
-		padding: 2px 8px;
-		border-radius: 6px;
-		font-size: 11px;
-		font-weight: 600;
 	}
 </style>
 
@@ -94,7 +35,7 @@
 		<h1>Constraint-Based Automated<br>Timetable Scheduling System</h1>
 		<p>
 			Computational feasibility engine and multi-resource allocation platform tailored for Punjab Engineering College.
-			Coordinates shared academic resources across <strong>CSE</strong>, <strong>AI</strong>, and <strong>Data Science (DS)</strong> departments
+			Coordinates shared academic resources across academic departments
 			while satisfying hard faculty, room capacity, and multi-venue practical constraints using CP-SAT constraint programming.
 		</p>
 		<div class="apple-hero-cta">
@@ -124,8 +65,8 @@
 		<div class="apple-canvas-body">
 			<div class="apple-stats-ribbon">
 				<div class="apple-stat-item">
-					<div class="apple-stat-number">3</div>
-					<div class="apple-stat-label">Coordinated Depts (CSE, AI, DS)</div>
+					<div class="apple-stat-number">Multi-Dept</div>
+					<div class="apple-stat-label">Coordinated Academic Departments</div>
 				</div>
 				<div class="apple-stat-item">
 					<div class="apple-stat-number">CP-SAT</div>
@@ -136,47 +77,8 @@
 					<div class="apple-stat-label">Hard-Constraint Verification</div>
 				</div>
 				<div class="apple-stat-item">
-					<div class="apple-stat-number">301+303</div>
-					<div class="apple-stat-label">Multi-Room Practical Support</div>
-				</div>
-			</div>
-
-			<!-- Project Team Credits Strip -->
-			<div style="background: var(--surface-tertiary); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 16px; border: 0.5px solid var(--border-hairline);">
-				<div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: var(--apple-blue); margin-bottom: 6px;">
-					Project Development Team &bull; Software Engineering
-				</div>
-				<div class="pec-team-badge-group">
-					<span class="pec-team-badge">
-						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-						<strong>Nikhil Verma</strong> &bull; 24103048
-					</span>
-					<span class="pec-team-badge">
-						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-						<strong>Paramvir Singh Saini</strong> &bull; 24103049
-					</span>
-					<span class="pec-team-badge">
-						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-						<strong>Aditaya Singh</strong> &bull; 24103055
-					</span>
-					<span class="pec-team-badge">
-						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-						<strong>Harman Singh</strong> &bull; 24103056
-					</span>
-				</div>
-			</div>
-
-			<!-- Problem Case Study Banner (from Project Document Figure 1) -->
-			<div class="pec-case-study-card">
-				<div class="pec-case-study-header">
-					<div style="display: flex; align-items: center; gap: 8px;">
-						<span class="pec-tag-blue">PEC Benchmark Scenario</span>
-						<span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">CSN5002: SC Lab (CSE1, CSE2) &bull; Venues: 301 + 303</span>
-					</div>
-					<span class="pec-tag-green">Multi-Venue Constraint Feasible</span>
-				</div>
-				<div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
-					<strong>Faculty In-Charge:</strong> Dr. Dipika &bull; <strong>Resource Allocation:</strong> Simultaneous reservation of multiple computing laboratories (Room 301 &amp; Room 303) eliminating the <em>"No venue available"</em> bottleneck through constraint programming.
+					<div class="apple-stat-number">Multi-Venue</div>
+					<div class="apple-stat-label">Laboratory &amp; Room Allocation</div>
 				</div>
 			</div>
 
@@ -234,12 +136,11 @@
 			<div>
 				<div class="apple-bento-header">
 					<span class="apple-section-eyebrow">Cross-Department</span>
-					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">CSE &bull; AI &bull; DS</span>
+					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">COORDINATED</span>
 				</div>
 				<h3 class="apple-bento-title">Multi-Department Allocation</h3>
 				<p class="apple-bento-desc">
-					Coordinate common courses, joint laboratories, and shared classrooms across Computer Science (CSE), Artificial Intelligence (AI),
-					and Data Science (DS) sections with zero inter-departmental conflicts.
+					Coordinate common courses, joint laboratories, and shared classrooms across academic departments and student sections with zero inter-departmental conflicts.
 				</p>
 			</div>
 			<div class="apple-pill-group">
@@ -261,7 +162,7 @@
 				</div>
 				<h3 class="apple-bento-title">Rooms &amp; Multi-Lab Venues</h3>
 				<p class="apple-bento-desc">
-					Comprehensive directory of classrooms and computing laboratories (including PEC Room 301 &amp; 303). Supports simultaneous allocation for multi-group practicals.
+					Comprehensive directory of classrooms and computing laboratories. Supports simultaneous allocation for multi-group practicals.
 				</p>
 			</div>
 			<div class="apple-pill-group">
@@ -318,12 +219,12 @@
 			</div>
 			<div>
 				<div style="font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">PEC Academic Administration &amp; Configuration</div>
-				<div style="font-size: 13px; color: var(--text-secondary);">Manage Punjab Engineering College academic terms, department mappings (CSE/AI/DS), user permissions, and solver parameters.</div>
+				<div style="font-size: 13px; color: var(--text-secondary);">Manage Punjab Engineering College academic terms, department mappings, user permissions, and solver parameters.</div>
 			</div>
 		</div>
 		<div class="apple-pill-group">
 			<a href="gwt.jsp?page=sessions" class="apple-pill-btn-prominent">Academic Sessions</a>
-			<a href="gwt.jsp?page=departments" class="apple-pill-btn">Departments (CSE/AI/DS)</a>
+			<a href="gwt.jsp?page=departments" class="apple-pill-btn">Departments</a>
 			<a href="gwt.jsp?page=roles" class="apple-pill-btn">Roles &amp; Permissions</a>
 			<a href="gwt.jsp?page=users" class="apple-pill-btn">User Accounts</a>
 		</div>
