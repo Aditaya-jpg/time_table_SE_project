@@ -1,8 +1,12 @@
 <%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8"%>
 <%--
- * Licensed to The Apereo Foundation under one or more contributor license
- * agreements. See the NOTICE file distributed with this work for
- * additional information regarding copyright ownership.
+ * Punjab Engineering College (PEC) - Software Engineering Project
+ * Constraint-Based Automated Timetable Scheduling System
+ * Team Members:
+ * - Nikhil Verma 24103048
+ * - Paramvir Singh Saini 24103049
+ * - Aditaya Singh 24103055
+ * - Harman Singh 24103056
 --%>
 <%@ page import="org.unitime.timetable.util.Constants" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -14,6 +18,60 @@
 	#unitime-Header, .unitime-PageHeader {
 		display: none !important;
 	}
+	.pec-team-badge-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: 10px;
+	}
+	.pec-team-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 4px 12px;
+		border-radius: 980px;
+		font-size: 12px;
+		font-weight: 500;
+		background: var(--surface-tertiary);
+		color: var(--text-primary);
+		border: 0.5px solid var(--border-hairline);
+	}
+	.pec-team-badge svg {
+		color: var(--apple-blue);
+	}
+	.pec-case-study-card {
+		background: var(--surface-secondary);
+		border: 1px solid var(--border-hairline);
+		border-radius: var(--radius-md);
+		padding: 18px 22px;
+		margin-top: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+	.pec-case-study-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+	.pec-tag-blue {
+		background: var(--apple-blue-subtle);
+		color: var(--apple-blue);
+		padding: 2px 8px;
+		border-radius: 6px;
+		font-size: 11px;
+		font-weight: 600;
+	}
+	.pec-tag-green {
+		background: var(--apple-green-subtle);
+		color: var(--apple-green);
+		padding: 2px 8px;
+		border-radius: 6px;
+		font-size: 11px;
+		font-weight: 600;
+	}
 </style>
 
 <s:if test="message != null && !message.isEmpty()">
@@ -24,29 +82,30 @@
 </s:if>
 
 <div class="apple-dashboard">
-	<!-- Hero Section: Apple Keynote Minimalism -->
+	<!-- Hero Section: Apple Keynote Minimalism + Punjab Engineering College -->
 	<section class="apple-hero">
 		<div class="apple-hero-eyebrow">
 			<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 				<circle cx="12" cy="12" r="10"></circle>
 				<polyline points="12 6 12 12 16 14"></polyline>
 			</svg>
-			<span>UniTime <%=Constants.getVersion()%> &bull; Enterprise Timetabling</span>
+			<span>Punjab Engineering College (PEC) &bull; Department of Computer Science &amp; Engineering</span>
 		</div>
-		<h1>Intelligent scheduling.<br>At campus scale.</h1>
+		<h1>Constraint-Based Automated<br>Timetable Scheduling System</h1>
 		<p>
-			Coordinate complex university operations with mathematical precision. Orchestrate course offerings,
-			student sectioning, examination periods, and campus facilities in real time.
+			Computational feasibility engine and multi-resource allocation platform tailored for Punjab Engineering College.
+			Coordinates shared academic resources across <strong>CSE</strong>, <strong>AI</strong>, and <strong>Data Science (DS)</strong> departments
+			while satisfying hard faculty, room capacity, and multi-venue practical constraints using CP-SAT constraint programming.
 		</p>
 		<div class="apple-hero-cta">
-			<a href="classSearch.action" class="apple-btn-primary">
-				<span>Open Class Search</span>
+			<a href="gwt.jsp?page=timetableGrid" class="apple-btn-primary">
+				<span>View Timetable Matrix</span>
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 					<polyline points="9 18 15 12 9 6"></polyline>
 				</svg>
 			</a>
-			<a href="timetableGrid.action" class="apple-btn-link">
-				<span>View Timetable Matrix</span>
+			<a href="classSearch.action" class="apple-btn-link">
+				<span>Explore Course Offerings</span>
 				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 					<polyline points="9 18 15 12 9 6"></polyline>
 				</svg>
@@ -54,36 +113,75 @@
 		</div>
 	</section>
 
-	<!-- Software Preview Canvas (macOS Window Presentation) -->
+	<!-- Software Showcase Canvas (macOS Window Presentation) -->
 	<div class="apple-showcase-canvas">
 		<div class="apple-canvas-header">
 			<div class="apple-window-dot apple-dot-red"></div>
 			<div class="apple-window-dot apple-dot-yellow"></div>
 			<div class="apple-window-dot apple-dot-green"></div>
-			<div class="apple-canvas-title">UniTime Control Center &mdash; Operations Live</div>
+			<div class="apple-canvas-title">PEC Scheduling Console &mdash; Constraint Solver Operations Live</div>
 		</div>
 		<div class="apple-canvas-body">
 			<div class="apple-stats-ribbon">
 				<div class="apple-stat-item">
-					<div class="apple-stat-number">2</div>
-					<div class="apple-stat-label">Active Academic Sessions</div>
+					<div class="apple-stat-number">3</div>
+					<div class="apple-stat-label">Coordinated Depts (CSE, AI, DS)</div>
 				</div>
 				<div class="apple-stat-item">
-					<div class="apple-stat-number">5</div>
-					<div class="apple-stat-label">CPSolver Engines Online</div>
+					<div class="apple-stat-number">CP-SAT</div>
+					<div class="apple-stat-label">Core Feasibility Engine</div>
 				</div>
 				<div class="apple-stat-item">
-					<div class="apple-stat-number">Superuser</div>
-					<div class="apple-stat-label">Full Administrative Access</div>
+					<div class="apple-stat-number">0 Clashes</div>
+					<div class="apple-stat-label">Hard-Constraint Verification</div>
 				</div>
 				<div class="apple-stat-item">
-					<div class="apple-stat-number">100%</div>
-					<div class="apple-stat-label">Features &amp; Modules Unlocked</div>
+					<div class="apple-stat-number">301+303</div>
+					<div class="apple-stat-label">Multi-Room Practical Support</div>
+				</div>
+			</div>
+
+			<!-- Project Team Credits Strip -->
+			<div style="background: var(--surface-tertiary); border-radius: var(--radius-sm); padding: 14px 18px; margin-bottom: 16px; border: 0.5px solid var(--border-hairline);">
+				<div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: var(--apple-blue); margin-bottom: 6px;">
+					Project Development Team &bull; Software Engineering
+				</div>
+				<div class="pec-team-badge-group">
+					<span class="pec-team-badge">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+						<strong>Nikhil Verma</strong> &bull; 24103048
+					</span>
+					<span class="pec-team-badge">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+						<strong>Paramvir Singh Saini</strong> &bull; 24103049
+					</span>
+					<span class="pec-team-badge">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+						<strong>Aditaya Singh</strong> &bull; 24103055
+					</span>
+					<span class="pec-team-badge">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+						<strong>Harman Singh</strong> &bull; 24103056
+					</span>
+				</div>
+			</div>
+
+			<!-- Problem Case Study Banner (from Project Document Figure 1) -->
+			<div class="pec-case-study-card">
+				<div class="pec-case-study-header">
+					<div style="display: flex; align-items: center; gap: 8px;">
+						<span class="pec-tag-blue">PEC Benchmark Scenario</span>
+						<span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">CSN5002: SC Lab (CSE1, CSE2) &bull; Venues: 301 + 303</span>
+					</div>
+					<span class="pec-tag-green">Multi-Venue Constraint Feasible</span>
+				</div>
+				<div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+					<strong>Faculty In-Charge:</strong> Dr. Dipika &bull; <strong>Resource Allocation:</strong> Simultaneous reservation of multiple computing laboratories (Room 301 &amp; Room 303) eliminating the <em>"No venue available"</em> bottleneck through constraint programming.
 				</div>
 			</div>
 
 			<!-- Quick Context Bar -->
-			<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+			<div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 16px;">
 				<div style="display: flex; align-items: center; gap: 12px;">
 					<div style="width: 32px; height: 32px; border-radius: 8px; background: var(--surface-tertiary); display: flex; align-items: center; justify-content: center; color: var(--apple-blue);">
 						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -92,122 +190,119 @@
 						</svg>
 					</div>
 					<div>
-						<div style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Logged in as Abraham Root (Administrator)</div>
-						<div style="font-size: 12px; color: var(--text-secondary);">Superuser privileges granted across all academic departments and terms.</div>
+						<div style="font-size: 13px; font-weight: 600; color: var(--text-primary);">PEC Administrator Console &bull; Session: Spring 2026</div>
+						<div style="font-size: 12px; color: var(--text-secondary);">Constraint satisfaction engine active for Punjab Engineering College academic terms.</div>
 					</div>
 				</div>
-				<a href="selectPrimaryRole.action" class="apple-pill-btn">Change Session / Role</a>
+				<a href="selectPrimaryRole.action" class="apple-pill-btn">Change Academic Session / Role</a>
 			</div>
 		</div>
 	</div>
 
 	<!-- Section Header -->
 	<div class="apple-section-header">
-		<div class="apple-section-eyebrow">Academic Operations</div>
-		<h2 class="apple-section-title">Designed for every facet of campus scheduling.</h2>
+		<div class="apple-section-eyebrow">Academic Operations &amp; Constraint Architecture</div>
+		<h2 class="apple-section-title">Designed for every facet of institutional scheduling.</h2>
 	</div>
 
 	<!-- Story Deck 1: Asymmetric 2-Column Bento Deck -->
 	<div class="apple-feature-deck-2">
-		<!-- Card 1: Course Timetabling Studio (Wide Hero Bento) -->
+		<!-- Card 1: Core Timetabling Studio -->
 		<div class="apple-bento-card">
 			<div>
 				<div class="apple-bento-header">
-					<span class="apple-section-eyebrow">Timetabling Studio</span>
+					<span class="apple-section-eyebrow">Constraint Engine</span>
 					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">ACTIVE</span>
 				</div>
-				<h3 class="apple-bento-title">Course Timetabling</h3>
+				<h3 class="apple-bento-title">Course Timetabling &amp; Matrix</h3>
 				<p class="apple-bento-desc">
-					Formulate optimal schedules for lectures, recitations, and laboratories. Satisfy instructor availability,
-					space limits, and student curriculum requirements simultaneously with constraint optimization.
+					Formulate clash-free schedules for lectures, tutorials, and practical sessions. Satisfy hard constraints including
+					faculty availability, section non-overlap, room capacity, and multi-venue requirements simultaneously.
 				</p>
 			</div>
 			<div class="apple-pill-group">
-				<a href="classSearch.action" class="apple-pill-btn-prominent">Class Search</a>
-				<a href="timetableGrid.action" class="apple-pill-btn">Timetable Matrix</a>
-				<a href="gwt.jsp?page=offerings" class="apple-pill-btn">Instructional Offerings</a>
-				<a href="gwt.jsp?page=solver" class="apple-pill-btn">Course Solver</a>
+				<a href="gwt.jsp?page=timetableGrid" class="apple-pill-btn-prominent">Timetable Matrix</a>
+				<a href="classSearch.action" class="apple-pill-btn">Class Search</a>
+				<a href="gwt.jsp?page=offerings" class="apple-pill-btn">Course Offerings</a>
+				<a href="gwt.jsp?page=solver" class="apple-pill-btn">CP-SAT / Solver</a>
 				<a href="gwt.jsp?page=curricula" class="apple-pill-btn">Curricula</a>
 			</div>
 		</div>
 
-		<!-- Card 2: Student Online Sectioning -->
+		<!-- Card 2: Cross-Department Coordination -->
 		<div class="apple-bento-card">
 			<div>
 				<div class="apple-bento-header">
-					<span class="apple-section-eyebrow">Student Sectioning</span>
-					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">ACTIVE</span>
+					<span class="apple-section-eyebrow">Cross-Department</span>
+					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">CSE &bull; AI &bull; DS</span>
 				</div>
-				<h3 class="apple-bento-title">Student Scheduling</h3>
+				<h3 class="apple-bento-title">Multi-Department Allocation</h3>
 				<p class="apple-bento-desc">
-					Intelligent conflict-free section assignments, real-time waitlists, advisor schedule approvals,
-					and student course demand projections.
+					Coordinate common courses, joint laboratories, and shared classrooms across Computer Science (CSE), Artificial Intelligence (AI),
+					and Data Science (DS) sections with zero inter-departmental conflicts.
 				</p>
 			</div>
 			<div class="apple-pill-group">
-				<a href="gwt.jsp?page=sectioning" class="apple-pill-btn-prominent">Scheduling Assistant</a>
-				<a href="sectioning.action" class="apple-pill-btn">Dashboard</a>
-				<a href="gwt.jsp?page=courseDemands" class="apple-pill-btn">Course Demands</a>
+				<a href="gwt.jsp?page=departments" class="apple-pill-btn-prominent">Departments Directory</a>
+				<a href="gwt.jsp?page=sectioning" class="apple-pill-btn">Student Sectioning</a>
+				<a href="gwt.jsp?page=courseDemands" class="apple-pill-btn">Demand Projections</a>
 			</div>
 		</div>
 	</div>
 
 	<!-- Story Deck 2: 3-Column Bento Deck -->
 	<div class="apple-feature-deck-3">
-		<!-- Card 3: Examination Operations -->
-		<div class="apple-bento-card">
-			<div>
-				<div class="apple-bento-header">
-					<span class="apple-section-eyebrow">Assessments</span>
-					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">ACTIVE</span>
-				</div>
-				<h3 class="apple-bento-title">Examinations</h3>
-				<p class="apple-bento-desc">
-					Automated midterm and final exam scheduling with individual student seating layouts and strict conflict verification.
-				</p>
-			</div>
-			<div class="apple-pill-group">
-				<a href="examSolver.action" class="apple-pill-btn-prominent">Exam Solver</a>
-				<a href="gwt.jsp?page=assignedExams" class="apple-pill-btn">Assigned Exams</a>
-				<a href="gwt.jsp?page=exams" class="apple-pill-btn">Exams Directory</a>
-			</div>
-		</div>
-
-		<!-- Card 4: Campus Spaces & Events -->
+		<!-- Card 3: Multi-Venue Labs & Facilities -->
 		<div class="apple-bento-card">
 			<div>
 				<div class="apple-bento-header">
 					<span class="apple-section-eyebrow">Facilities</span>
 					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">ACTIVE</span>
 				</div>
-				<h3 class="apple-bento-title">Events &amp; Spaces</h3>
+				<h3 class="apple-bento-title">Rooms &amp; Multi-Lab Venues</h3>
 				<p class="apple-bento-desc">
-					Comprehensive campus room directories, real-time space booking requests, event approval workflows, and room utilization.
+					Comprehensive directory of classrooms and computing laboratories (including PEC Room 301 &amp; 303). Supports simultaneous allocation for multi-group practicals.
 				</p>
 			</div>
 			<div class="apple-pill-group">
 				<a href="gwt.jsp?page=rooms" class="apple-pill-btn-prominent">Room Availability</a>
-				<a href="gwt.jsp?page=events" class="apple-pill-btn">Events Portal</a>
-				<a href="events.action" class="apple-pill-btn">Add Event</a>
+				<a href="gwt.jsp?page=events" class="apple-pill-btn">Events &amp; Spaces</a>
 			</div>
 		</div>
 
-		<!-- Card 5: Instructors & Faculty -->
+		<!-- Card 4: Faculty Availability & Workload -->
 		<div class="apple-bento-card">
 			<div>
 				<div class="apple-bento-header">
 					<span class="apple-section-eyebrow">Faculty</span>
 					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">ACTIVE</span>
 				</div>
-				<h3 class="apple-bento-title">Instructors</h3>
+				<h3 class="apple-bento-title">Faculty &amp; Instructors</h3>
 				<p class="apple-bento-desc">
-					Manage faculty assignments, workload policies, scheduling preferences, instructor attributes, and preference surveys.
+					Manage instructor profiles, department assignments, teaching workload limits, and faculty timing availability to prevent double-booking.
 				</p>
 			</div>
 			<div class="apple-pill-group">
-				<a href="gwt.jsp?page=instructors" class="apple-pill-btn-prominent">Instructors</a>
-				<a href="gwt.jsp?page=instructorattributes" class="apple-pill-btn">Attributes</a>
-				<a href="gwt.jsp?page=instructorSurvey" class="apple-pill-btn">Faculty Survey</a>
+				<a href="gwt.jsp?page=instructors" class="apple-pill-btn-prominent">Faculty Directory</a>
+				<a href="gwt.jsp?page=instructorSurvey" class="apple-pill-btn">Availability Survey</a>
+			</div>
+		</div>
+
+		<!-- Card 5: Conflict Detection & Independent Validation -->
+		<div class="apple-bento-card">
+			<div>
+				<div class="apple-bento-header">
+					<span class="apple-section-eyebrow">Verification</span>
+					<span style="font-size: 11px; font-weight: 600; color: var(--apple-green); background: var(--apple-green-subtle); padding: 3px 8px; border-radius: 12px;">DFD LEVEL 1/2</span>
+				</div>
+				<h3 class="apple-bento-title">Conflict &amp; Feasibility Reports</h3>
+				<p class="apple-bento-desc">
+					Independent clash verification ensuring zero faculty, section, or room overlaps. Detects infeasibilities and exports timetable reports in PDF/CSV.
+				</p>
+			</div>
+			<div class="apple-pill-group">
+				<a href="examSolver.action" class="apple-pill-btn-prominent">Exam Solver</a>
+				<a href="gwt.jsp?page=assignedExams" class="apple-pill-btn">Assigned Exams</a>
 			</div>
 		</div>
 	</div>
@@ -222,13 +317,13 @@
 				</svg>
 			</div>
 			<div>
-				<div style="font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">Campus Administration &amp; Configuration</div>
-				<div style="font-size: 13px; color: var(--text-secondary);">Manage academic terms, department mappings, user roles, solver profiles, and data integrations.</div>
+				<div style="font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">PEC Academic Administration &amp; Configuration</div>
+				<div style="font-size: 13px; color: var(--text-secondary);">Manage Punjab Engineering College academic terms, department mappings (CSE/AI/DS), user permissions, and solver parameters.</div>
 			</div>
 		</div>
 		<div class="apple-pill-group">
 			<a href="gwt.jsp?page=sessions" class="apple-pill-btn-prominent">Academic Sessions</a>
-			<a href="gwt.jsp?page=departments" class="apple-pill-btn">Departments</a>
+			<a href="gwt.jsp?page=departments" class="apple-pill-btn">Departments (CSE/AI/DS)</a>
 			<a href="gwt.jsp?page=roles" class="apple-pill-btn">Roles &amp; Permissions</a>
 			<a href="gwt.jsp?page=users" class="apple-pill-btn">User Accounts</a>
 		</div>

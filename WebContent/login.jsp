@@ -50,7 +50,7 @@
     	<link rel="stylesheet" type="text/css" href="%tmtbl.custom.css%" />
     </tt:hasProperty>
     <link rel="shortcut icon" href="images/timetabling.ico" />
-	<title>UniTime <%=Constants.VERSION%>| <loc:message name="pageLogIn"/></title>
+	<title>PEC Timetable Scheduler | Punjab Engineering College</title>
     <script type="text/javascript" src="scripts/loading.js"></script>
 	<script type="text/javascript" src="scripts/rtt.js"></script>
 	<script type="text/javascript" src="unitime/unitime.nocache.js"></script>
@@ -81,8 +81,8 @@
 		<span class="mobile-menu-button" id='UniTimeGWT:MobileMenuButton'></span>
 		<span class='logo'><img src="images/unitime.png" border="0" alt="UniTime"></span>
 		<span class='header'>
-			<h1><loc:message name="pageLogInH1"/></h1>
-			<h2><loc:message name="pageLogInH2"/></h2>
+			<h1>Punjab Engineering College (PEC)</h1>
+			<h2>Constraint-Based Automated Timetable Scheduling System</h2>
 		</span>
 		<span class="mobile-menu" id='UniTimeGWT:MobileMenuPanel'></span>
 		<c:if test="${errorMsg != null}"><div class='error'><c:out value="${errorMsg}" escapeXml="true"/></div></c:if>
@@ -116,6 +116,11 @@
 		<c:if test="${oauth2LoginUrl != null}">
 			<span class='alt-login'><a href="${oauth2LoginUrl}"><c:out value="${oauth2LoginMessage}"/></a></span>
 		</c:if>
+		<div style="text-align: center; margin-top: 18px; font-size: 12px; color: #86868b; line-height: 1.6;">
+			<div style="font-weight: 600; color: #f5f5f7; margin-bottom: 4px;">Software Engineering Project Team:</div>
+			Nikhil Verma (24103048) &bull; Paramvir Singh Saini (24103049)<br>
+			Aditaya Singh (24103055) &bull; Harman Singh (24103056)
+		</div>
 	</div>
 </form>
 	<c:if test="${startupError != null}">
