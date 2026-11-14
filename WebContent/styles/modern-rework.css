@@ -1,0 +1,1384 @@
+/* ==========================================================================
+   UniTime 4.9 — Apple-Inspired Design System & Visual Framework
+   Rooted in Apple Human Interface Guidelines (HIG) & Design Craft
+   ========================================================================== */
+
+:root, [data-theme="dark"] {
+  /* Typography: Apple San Francisco System Hierarchy */
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, Monaco, monospace;
+
+  /* Color Palette: Dark (Apple Pro Dark) */
+  --canvas-bg: #000000;
+  --surface-elevated: #161618;
+  --surface-secondary: #1d1d1f;
+  --surface-tertiary: #262629;
+  
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hairline: rgba(255, 255, 255, 0.12);
+  --border-focus: #2997ff;
+
+  /* Typography Colors */
+  --text-primary: #f5f5f7;
+  --text-secondary: #86868b;
+  --text-tertiary: #6e6e73;
+  --text-quaternary: #48484a;
+
+  /* Apple Semantic Accents */
+  --apple-blue: #2997ff;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-subtle: rgba(41, 151, 255, 0.15);
+  --apple-green: #30d158;
+  --apple-green-subtle: rgba(48, 209, 88, 0.15);
+  --apple-orange: #ff9f0a;
+  --apple-orange-subtle: rgba(255, 159, 10, 0.15);
+  --apple-red: #ff453a;
+  --apple-red-subtle: rgba(255, 69, 58, 0.15);
+  --apple-purple: #bf5af2;
+  --apple-teal: #64d2ff;
+  --apple-indigo: #5e5ce6;
+
+  /* Liquid Glass (Functional Layer Only: Navigation, Popovers, Floating Bars) */
+  --liquid-glass-bg: rgba(0, 0, 0, 0.80);
+  --liquid-glass-panel: rgba(22, 22, 24, 0.85);
+  --liquid-glass-blur: saturate(180%) blur(20px);
+  --liquid-glass-border: rgba(255, 255, 255, 0.12);
+  --liquid-glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.15);
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 980px;
+
+  /* Animation Timings */
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-fast: 0.18s var(--ease-apple);
+  --transition-normal: 0.28s var(--ease-apple);
+  --transition-slow: 0.45s var(--ease-apple);
+}
+
+/* ==========================================================================
+   Light Mode (Apple Clean Canvas)
+   ========================================================================== */
+[data-theme="light"] {
+  --canvas-bg: #fbfbfd;
+  --surface-elevated: #ffffff;
+  --surface-secondary: #f5f5f7;
+  --surface-tertiary: #e8e8ed;
+  
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-hairline: rgba(0, 0, 0, 0.12);
+  --border-focus: #0071e3;
+
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #a1a1a6;
+  --text-quaternary: #d2d2d7;
+
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-blue-subtle: rgba(0, 113, 227, 0.10);
+  --apple-green: #28cd41;
+  --apple-green-subtle: rgba(40, 205, 65, 0.10);
+  --apple-orange: #ff9500;
+  --apple-orange-subtle: rgba(255, 149, 0, 0.10);
+  --apple-red: #ff3b30;
+  --apple-red-subtle: rgba(255, 59, 48, 0.10);
+  --apple-purple: #af52de;
+  --apple-teal: #55bef0;
+  --apple-indigo: #5856d6;
+
+  --liquid-glass-bg: rgba(255, 255, 255, 0.82);
+  --liquid-glass-panel: rgba(255, 255, 255, 0.90);
+  --liquid-glass-blur: saturate(180%) blur(20px);
+  --liquid-glass-border: rgba(0, 0, 0, 0.08);
+  --liquid-glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   Global Base & Typography
+   ========================================================================== */
+html,
+body,
+body.unitime-Body,
+.unitime-Body,
+.bodyMain {
+  font-family: var(--font-system) !important;
+  background: var(--canvas-bg) !important;
+  background-color: var(--canvas-bg) !important;
+  color: var(--text-primary) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Bulletproof Dark Canvas: Override any legacy white backgrounds from unitime.css or timetabling.css */
+[data-theme="dark"],
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] body.unitime-Body,
+html[data-theme="dark"] .unitime-Body,
+html[data-theme="dark"] .bodyMain,
+html[data-theme="dark"] .unitime-Page,
+html[data-theme="dark"] .unitime-Page .row,
+html[data-theme="dark"] .unitime-Page .main,
+html[data-theme="dark"] .unitime-Page .sidebar,
+html[data-theme="dark"] .unitime-Page .body,
+html[data-theme="dark"] span.body#unitime-Page,
+html[data-theme="dark"] #unitime-Page,
+html[data-theme="dark"] span#unitime-Page,
+html[data-theme="dark"] span.main,
+html[data-theme="dark"] span.body,
+html[data-theme="dark"] span.row,
+html[data-theme="dark"] span.content,
+html[data-theme="dark"] .unitime-Page .content,
+html[data-theme="dark"] .unitime-MainContent,
+html[data-theme="dark"] #UniTimeGWT\:Content,
+html[data-theme="dark"] .unitime-Struts2,
+html[data-theme="dark"] .apple-dashboard {
+  background-color: #000000 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  color: #f5f5f7 !important;
+  border-color: transparent !important;
+}
+
+/* Bulletproof Light Canvas */
+[data-theme="light"],
+html[data-theme="light"],
+html[data-theme="light"] body,
+html[data-theme="light"] body.unitime-Body,
+html[data-theme="light"] .unitime-Body,
+html[data-theme="light"] .bodyMain,
+html[data-theme="light"] .unitime-Page,
+html[data-theme="light"] .unitime-Page .row,
+html[data-theme="light"] .unitime-Page .main,
+html[data-theme="light"] .unitime-Page .sidebar,
+html[data-theme="light"] .unitime-Page .body,
+html[data-theme="light"] span.body#unitime-Page,
+html[data-theme="light"] #unitime-Page,
+html[data-theme="light"] span#unitime-Page,
+html[data-theme="light"] span.main,
+html[data-theme="light"] span.body,
+html[data-theme="light"] span.row,
+html[data-theme="light"] span.content,
+html[data-theme="light"] .unitime-Page .content,
+html[data-theme="light"] .unitime-MainContent,
+html[data-theme="light"] #UniTimeGWT\:Content,
+html[data-theme="light"] .unitime-Struts2,
+html[data-theme="light"] .apple-dashboard {
+  background-color: #fbfbfd !important;
+  background: #fbfbfd !important;
+  background-image: none !important;
+  color: #1d1d1f !important;
+  border-color: transparent !important;
+}
+
+/* Structural Resets: Kill all legacy tables & 800px width locks */
+.unitime-Page,
+.unitime-Page .row,
+.unitime-Page .main,
+.unitime-Page .sidebar,
+.unitime-Page .body,
+#unitime-Page,
+.unitime-Page .content,
+.unitime-MainContent,
+#UniTimeGWT\:Content,
+.unitime-Struts2 {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: auto !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Suppress unneeded legacy badges & watermarks */
+.unitime-MainLogo, .unitime-MainLogoFaded, .unitime-MainContent.unitime-MainLogo,
+.unitime-Footer .cell.right, .unitime-Footer .right, #UniTimeGWT\:Registration,
+.unitime-Registration, [class*="Registration"]:not(.header-title), .unitime-RegistrationPopup {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* ==========================================================================
+   FUNCTIONAL LAYER: Top Navigation Bar (Liquid Glass)
+   Apple HIG: Glass belongs ONLY on floating controls and navigation
+   ========================================================================== */
+.top-menu, .unitime-TopMenu {
+  padding: 0 28px !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9000 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: background var(--transition-fast) !important;
+}
+
+[data-theme="dark"] .top-menu,
+[data-theme="dark"] .unitime-TopMenu {
+  background: rgba(18, 18, 20, 0.85) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .top-menu *,
+[data-theme="dark"] .unitime-TopMenu * {
+  border-color: transparent !important;
+}
+
+[data-theme="dark"] .gwt-MenuBar,
+[data-theme="dark"] .gwt-MenuBar-horizontal,
+[data-theme="dark"] table.gwt-MenuBar-horizontal,
+[data-theme="dark"] .top-menu table,
+[data-theme="dark"] .top-menu tbody,
+[data-theme="dark"] .top-menu tr,
+[data-theme="dark"] .top-menu td,
+[data-theme="dark"] #UniTimeGWT\:DynamicTopMenu,
+[data-theme="dark"] #UniTimeGWT\:TopMenu {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .gwt-MenuBar-horizontal .gwt-MenuItem,
+[data-theme="dark"] .gwt-MenuBar .gwt-MenuItem {
+  color: #a1a1a6 !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+
+[data-theme="dark"] .gwt-MenuBar-horizontal .gwt-MenuItem:hover,
+[data-theme="dark"] .gwt-MenuBar .gwt-MenuItem:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.10) !important;
+}
+
+[data-theme="dark"] .gwt-MenuBar-horizontal .gwt-MenuItem-selected,
+[data-theme="dark"] .gwt-MenuBar .gwt-MenuItem-selected {
+  color: #2997ff !important;
+  background: rgba(41, 151, 255, 0.15) !important;
+}
+
+[data-theme="light"] .top-menu,
+[data-theme="light"] .unitime-TopMenu {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: saturate(180%) blur(20px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px) !important;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.10) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .gwt-MenuBar,
+[data-theme="light"] .gwt-MenuBar-horizontal,
+[data-theme="light"] table.gwt-MenuBar-horizontal,
+[data-theme="light"] .top-menu table,
+[data-theme="light"] .top-menu tbody,
+[data-theme="light"] .top-menu tr,
+[data-theme="light"] .top-menu td,
+[data-theme="light"] #UniTimeGWT\:DynamicTopMenu,
+[data-theme="light"] #UniTimeGWT\:TopMenu {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+[data-theme="light"] .gwt-MenuBar-horizontal .gwt-MenuItem,
+[data-theme="light"] .gwt-MenuBar .gwt-MenuItem {
+  color: #515154 !important;
+  background: transparent !important;
+  background-image: none !important;
+}
+
+[data-theme="light"] .gwt-MenuBar-horizontal .gwt-MenuItem:hover,
+[data-theme="light"] .gwt-MenuBar .gwt-MenuItem:hover {
+  color: #000000 !important;
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .gwt-MenuBar-horizontal .gwt-MenuItem-selected,
+[data-theme="light"] .gwt-MenuBar .gwt-MenuItem-selected {
+  color: #0071e3 !important;
+  background: rgba(0, 113, 227, 0.10) !important;
+}
+
+.top-menu table, .top-menu tbody, .top-menu tr, .top-menu td,
+#UniTimeGWT\:DynamicTopMenu, #UniTimeGWT\:TopMenu {
+  height: auto !important;
+  width: auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.gwt-MenuBar, .gwt-MenuBar-horizontal, .unitime-Menu {
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+.gwt-MenuBar-horizontal .gwt-MenuItem,
+.gwt-MenuBar .gwt-MenuItem {
+  font-family: var(--font-system) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  padding: 6px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid transparent !important;
+  transition: color var(--transition-fast), background var(--transition-fast) !important;
+  margin: 0 2px !important;
+  cursor: pointer !important;
+}
+
+/* Floating Submenus (Liquid Glass Popover) */
+.gwt-MenuBarPopup, .gwt-PopupPanel {
+  z-index: 9500 !important;
+}
+
+.gwt-MenuBarPopup .popupContent,
+.gwt-MenuBar-vertical {
+  background: var(--liquid-glass-panel) !important;
+  backdrop-filter: var(--liquid-glass-blur) !important;
+  -webkit-backdrop-filter: var(--liquid-glass-blur) !important;
+  border: 0.5px solid var(--liquid-glass-border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--liquid-glass-shadow) !important;
+  padding: 8px !important;
+  min-width: 220px !important;
+  animation: appleFadeIn 0.2s var(--ease-apple) !important;
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItem {
+  font-family: var(--font-system) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: var(--text-primary) !important;
+  padding: 8px 12px !important;
+  border-radius: var(--radius-sm) !important;
+  border: none !important;
+  transition: background var(--transition-fast), color var(--transition-fast) !important;
+  margin: 1px 0 !important;
+  display: block !important;
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItem:hover,
+.gwt-MenuBar-vertical .gwt-MenuItem-selected {
+  color: #ffffff !important;
+  background: var(--apple-blue) !important;
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItemSeparator {
+  border-top: 0.5px solid var(--border-subtle) !important;
+  margin: 6px 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   Page Subhead / Product App Bar (.unitime-PageHeader)
+   ========================================================================== */
+.unitime-PageHeader, #unitime-Header {
+  background: var(--canvas-bg) !important;
+  border-bottom: 0.5px solid var(--border-subtle) !important;
+  padding: 16px 36px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.unitime-PageHeader .row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  background: transparent !important;
+}
+
+.unitime-PageHeader .logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  text-decoration: none !important;
+  background-image: none !important;
+  height: auto !important;
+  min-width: auto !important;
+  margin: 0 !important;
+}
+
+.unitime-PageHeader .logo::after {
+  content: 'UniTime';
+  font-family: var(--font-system);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.unitime-PageHeader .content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 16px !important;
+  background: transparent !important;
+  width: auto !important;
+}
+
+.unitime-PageHeader .title, #UniTimeGWT\:Title, .title {
+  font-family: var(--font-system) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text-secondary) !important;
+  margin: 0 !important;
+}
+
+/* Session & Role Capsule in Header (macOS Control Center Style) */
+.unitime-InfoPanel, #UniTimeGWT\:Header {
+  font-family: var(--font-system) !important;
+  background: var(--surface-elevated) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 6px 14px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.unitime-InfoPanel a, #UniTimeGWT\:Header a {
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.unitime-InfoPanel a:hover, #UniTimeGWT\:Header a:hover {
+  color: var(--apple-blue) !important;
+}
+
+/* System Messages Banner */
+.messages {
+  border-radius: var(--radius-md) !important;
+  padding: 16px 24px !important;
+  margin: 24px auto 0 auto !important;
+  max-width: 900px !important;
+  box-sizing: border-box !important;
+  transition: all var(--transition-fast) !important;
+}
+
+[data-theme="dark"] .messages {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .messages .WelcomeRowHead {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #f5f5f7 !important;
+  margin-bottom: 4px !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .messages .message {
+  color: #86868b !important;
+  font-size: 13px !important;
+}
+
+[data-theme="light"] .messages {
+  background: #ffffff !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.10) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .messages .WelcomeRowHead {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #1d1d1f !important;
+  margin-bottom: 4px !important;
+  border: none !important;
+}
+
+[data-theme="light"] .messages .message {
+  color: #515154 !important;
+  font-size: 13px !important;
+}
+
+/* ==========================================================================
+   PRIMARY TIMETABLE MATRIX INTERFACE (Calendar & Numbers Craft)
+   ========================================================================== */
+.unitime-TimetablePage {
+  padding: 24px 36px 48px 36px !important;
+  max-width: 1600px !important;
+  margin: 0 auto !important;
+}
+
+/* Timetable Matrix Grid (Struts .C1 - .C7) */
+table.unitime-TimetableGrid,
+.unitime-TimetableGrid {
+  background: var(--surface-elevated) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-md) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+}
+
+/* Time Coordinate Headers (.C1) */
+.C1 {
+  background-color: var(--surface-secondary) !important;
+  color: var(--text-secondary) !important;
+  font-family: var(--font-system) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 8px 12px !important;
+  border-bottom: 0.5px solid var(--border-hairline) !important;
+  border-right: 0.5px solid var(--border-subtle) !important;
+  text-align: center !important;
+}
+
+/* Grid Line Separators (.C2) */
+.C2 {
+  background-color: var(--border-subtle) !important;
+  width: 1px !important;
+  padding: 0 !important;
+}
+
+/* Resource Room Column (.C3) */
+.C3 {
+  background-color: var(--surface-secondary) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 10px 14px !important;
+  border-right: 0.5px solid var(--border-hairline) !important;
+  border-bottom: 0.5px solid var(--border-subtle) !important;
+  white-space: nowrap !important;
+}
+
+/* Scheduled Class Blocks (.C4) — Precision Apple Tiles */
+.C4 {
+  background: linear-gradient(180deg, #1d4ed8 0%, #1e40af 100%) !important;
+  color: #ffffff !important;
+  font-family: var(--font-system) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  cursor: pointer !important;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.C4:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.C6 {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Free / Unassigned Time Slots (.C7) */
+.C7 {
+  background-color: transparent !important;
+  border-bottom: 0.5px solid var(--border-subtle) !important;
+  border-right: 0.5px solid var(--border-subtle) !important;
+}
+
+/* GWT Timetable Meeting Blocks */
+.unitime-TimetableGrid .meeting {
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  font-family: var(--font-system) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer !important;
+  transition: transform var(--transition-fast) !important;
+}
+
+.unitime-TimetableGrid .meeting:hover {
+  transform: scale(1.02) !important;
+  z-index: 100 !important;
+}
+
+/* Interactive Timetable Tooltip (Liquid Glass Popover) */
+.unitime-Tooltip {
+  background: var(--liquid-glass-panel) !important;
+  backdrop-filter: var(--liquid-glass-blur) !important;
+  -webkit-backdrop-filter: var(--liquid-glass-blur) !important;
+  border: 0.5px solid var(--liquid-glass-border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--liquid-glass-shadow) !important;
+  color: var(--text-primary) !important;
+  padding: 16px 20px !important;
+  font-family: var(--font-system) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  z-index: 9999 !important;
+  max-width: 380px !important;
+}
+
+/* ==========================================================================
+   FORM CONTROLS & SEARCH PANELS (Apple Clean Form Elements)
+   ========================================================================== */
+table.unitime-MainTable {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 20px auto 32px auto !important;
+  max-width: 1400px !important;
+  width: calc(100% - 48px) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#dispFilter,
+div[id^="dispFilter"],
+#Filter,
+.unitime-PageFilter {
+  background: var(--surface-elevated) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-sm) !important;
+  padding: 24px 32px !important;
+  margin: 16px 0 24px 0 !important;
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  box-sizing: border-box !important;
+}
+
+table.unitime-MainTable td,
+#dispFilter td,
+.unitime-PageFilter td {
+  padding: 8px 12px !important;
+  color: var(--text-secondary) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+
+/* Section Headings */
+.WelcomeRowHead,
+.WelcomeRowHeadNoLine,
+.WelcomeRowHeadBlank {
+  font-family: var(--font-system) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text-primary) !important;
+  border-bottom: 0.5px solid var(--border-subtle) !important;
+  padding: 12px 0 !important;
+  margin: 32px auto 16px auto !important;
+  max-width: 1400px !important;
+  width: calc(100% - 48px) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+/* Inputs, Selects, Dropdowns */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+textarea,
+select,
+.gwt-SuggestBox {
+  font-family: var(--font-system) !important;
+  font-size: 13px !important;
+  color: var(--text-primary) !important;
+  background: var(--surface-secondary) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 12px !important;
+  height: 36px !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus,
+.gwt-SuggestBox:focus {
+  border-color: var(--border-focus) !important;
+  box-shadow: 0 0 0 3px var(--apple-blue-subtle) !important;
+}
+
+/* Multi-select listbox */
+select[multiple], select[size] {
+  height: auto !important;
+  min-height: 120px !important;
+  padding: 6px !important;
+}
+
+select[multiple] option, select[size] option {
+  padding: 6px 10px !important;
+  border-radius: var(--radius-xs) !important;
+  margin: 1px 0 !important;
+}
+
+select[multiple] option:checked, select[size] option:checked {
+  background: var(--apple-blue) !important;
+  color: #ffffff !important;
+}
+
+/* Apple Buttons (Pills with precision hover states) */
+input[type="submit"],
+input[type="button"],
+button.gwt-Button,
+.gwt-Button {
+  font-family: var(--font-system) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  padding: 8px 18px !important;
+  border-radius: var(--radius-pill) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  background: var(--apple-blue) !important;
+  color: #ffffff !important;
+  transition: all var(--transition-fast) !important;
+  margin: 4px !important;
+  height: 34px !important;
+  box-sizing: border-box !important;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button.gwt-Button:hover {
+  background: var(--apple-blue-hover) !important;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.4) !important;
+}
+
+input[type="submit"]:active,
+input[type="button"]:active,
+button.gwt-Button:active {
+  transform: scale(0.97) !important;
+}
+
+/* Secondary outline buttons (Export CSV, XLS, PDF) */
+input[value*="Export"],
+input[value*="Print"],
+input[value*="Clear"] {
+  background: var(--surface-tertiary) !important;
+  color: var(--text-primary) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+}
+
+input[value*="Export"]:hover,
+input[value*="Print"]:hover,
+input[value*="Clear"]:hover {
+  background: var(--border-hairline) !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   DATA TABLES & WEBTABLE (WebTable.java)
+   ========================================================================== */
+table.unitime-LegacyWebTable,
+table.unitime-Table,
+.unitime-LegacyWebTable {
+  background: var(--surface-elevated) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-sm) !important;
+  margin: 16px auto 36px auto !important;
+  max-width: 1400px !important;
+  width: calc(100% - 48px) !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+/* Table Column Headers */
+.WebTableHeader,
+.WebTableHeaderFirstRow,
+.WebTableHeaderSecondRow {
+  background: var(--surface-secondary) !important;
+  color: var(--text-secondary) !important;
+  font-family: var(--font-system) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 12px 14px !important;
+  border-bottom: 0.5px solid var(--border-hairline) !important;
+  text-align: left !important;
+}
+
+/* Table Data Rows */
+table.unitime-LegacyWebTable tr:not(.WebTableHeader):not(.WebTableHeaderFirstRow):not(.WebTableHeaderSecondRow) td {
+  padding: 12px 14px !important;
+  border-bottom: 0.5px solid var(--border-subtle) !important;
+  font-size: 13px !important;
+  color: var(--text-primary) !important;
+  transition: background var(--transition-fast) !important;
+}
+
+table.unitime-LegacyWebTable tr:not(.WebTableHeader):hover td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+[data-theme="light"] table.unitime-LegacyWebTable tr:not(.WebTableHeader):hover td {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Apple Status Tags & Badges */
+.unlocked-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--apple-green-subtle);
+  color: var(--apple-green);
+  border: 0.5px solid rgba(48, 209, 88, 0.3);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Dialog Boxes & Modals (Liquid Glass Sheet) */
+.gwt-DialogBox {
+  background: var(--surface-elevated) !important;
+  border: 0.5px solid var(--border-hairline) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  overflow: hidden !important;
+  animation: appleModalEnter 0.25s var(--ease-apple) !important;
+}
+
+.gwt-DialogBox .Caption {
+  background: var(--surface-secondary) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-system) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  padding: 16px 20px !important;
+  border-bottom: 0.5px solid var(--border-hairline) !important;
+}
+
+.gwt-DialogBox .dialogContent {
+  padding: 24px !important;
+  color: var(--text-primary) !important;
+}
+
+/* ==========================================================================
+   APPLE EDITORIAL DASHBOARD (main.jsp Rework)
+   ========================================================================== */
+body:has(.apple-dashboard) #unitime-Header,
+.unitime-Page:has(.apple-dashboard) #unitime-Header,
+#unitime-Page:has(.apple-dashboard) #unitime-Header {
+  display: none !important;
+}
+
+.apple-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 24px 80px 24px;
+}
+
+/* Apple Hero Section */
+.apple-hero {
+  text-align: center;
+  padding: 32px 0 56px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.apple-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] .apple-hero-eyebrow {
+  color: #2997ff !important;
+}
+
+[data-theme="light"] .apple-hero-eyebrow {
+  color: #0071e3 !important;
+}
+
+.apple-hero h1 {
+  font-family: var(--font-system) !important;
+  font-size: 56px !important;
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.035em !important;
+  margin: 0 0 20px 0 !important;
+}
+
+[data-theme="dark"] .apple-hero h1 {
+  color: #f5f5f7 !important;
+}
+
+[data-theme="light"] .apple-hero h1 {
+  color: #1d1d1f !important;
+}
+
+@media (max-width: 768px) {
+  .apple-hero h1 {
+    font-size: 38px !important;
+  }
+}
+
+.apple-hero p {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  max-width: 680px !important;
+  margin: 0 auto 32px auto !important;
+}
+
+[data-theme="dark"] .apple-hero p {
+  color: #86868b !important;
+}
+
+[data-theme="light"] .apple-hero p {
+  color: #6e6e73 !important;
+}
+
+.apple-hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.apple-btn-primary {
+  background: var(--apple-blue);
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 26px;
+  border-radius: var(--radius-pill);
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.apple-btn-primary:hover {
+  background: var(--apple-blue-hover);
+  transform: scale(1.02);
+}
+
+.apple-btn-link {
+  color: var(--apple-blue) !important;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap var(--transition-fast);
+}
+
+.apple-btn-link:hover {
+  gap: 8px;
+}
+
+/* Software Preview Canvas (Editorial Showcase) */
+.apple-showcase-canvas {
+  background: var(--surface-elevated);
+  border: 0.5px solid var(--border-hairline);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin: 40px auto 72px auto;
+  position: relative;
+}
+
+.apple-canvas-header {
+  height: 42px;
+  background: var(--surface-secondary);
+  border-bottom: 0.5px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.apple-window-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.apple-dot-red { background: #ff5f56; }
+.apple-dot-yellow { background: #ffbd2e; }
+.apple-dot-green { background: #27c93f; }
+
+.apple-canvas-title {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.apple-canvas-body {
+  padding: 36px 40px;
+}
+
+/* Statistics Ribbon */
+.apple-stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  border-bottom: 0.5px solid var(--border-subtle);
+  padding-bottom: 32px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 800px) {
+  .apple-stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.apple-stat-item {
+  text-align: left;
+}
+
+.apple-stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.apple-stat-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Apple Editorial Split Features (Asymmetric & Story-Driven) */
+.apple-section-header {
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.apple-section-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--apple-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.apple-section-title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Asymmetric 2-Column Feature Deck */
+.apple-feature-deck-2 {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 900px) {
+  .apple-feature-deck-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.apple-bento-card {
+  background: var(--surface-elevated);
+  border: 0.5px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.apple-bento-card:hover {
+  border-color: var(--border-hairline);
+  transform: translateY(-2px);
+}
+
+.apple-bento-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.apple-bento-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.apple-bento-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.apple-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.apple-pill-btn {
+  background: var(--surface-tertiary);
+  color: var(--text-primary) !important;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  text-decoration: none !important;
+  border: 0.5px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.apple-pill-btn:hover {
+  background: var(--apple-blue);
+  color: #ffffff !important;
+  border-color: var(--apple-blue);
+}
+
+.apple-pill-btn-prominent {
+  background: var(--apple-blue-subtle);
+  color: var(--apple-blue) !important;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  text-decoration: none !important;
+  border: 0.5px solid rgba(41, 151, 255, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.apple-pill-btn-prominent:hover {
+  background: var(--apple-blue);
+  color: #ffffff !important;
+}
+
+/* 3-Column Asymmetric Grid */
+.apple-feature-deck-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 900px) {
+  .apple-feature-deck-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Administrative Control Strip */
+.apple-admin-strip {
+  background: var(--surface-elevated);
+  border: 0.5px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.apple-admin-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.apple-admin-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--surface-secondary);
+  border: 0.5px solid var(--border-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--apple-blue);
+}
+
+/* ==========================================================================
+   FOOTER (Apple Minimalist Baseline)
+   ========================================================================== */
+.unitime-Footer {
+  background: var(--canvas-bg) !important;
+  border-top: 0.5px solid var(--border-subtle) !important;
+  padding: 28px 36px 48px 36px !important;
+  font-family: var(--font-system) !important;
+  font-size: 12px !important;
+  color: var(--text-tertiary) !important;
+  margin-top: 64px !important;
+}
+
+.unitime-Footer .row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.unitime-Footer .cell {
+  width: auto !important;
+}
+
+.unitime-Footer a {
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  transition: color var(--transition-fast) !important;
+}
+
+.unitime-Footer a:hover {
+  color: var(--apple-blue) !important;
+}
+
+/* ==========================================================================
+   FLOATING THEME TOGGLE CONTROLLER (Liquid Glass)
+   ========================================================================== */
+.theme-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-pill);
+  background: var(--liquid-glass-bg);
+  backdrop-filter: var(--liquid-glass-blur);
+  -webkit-backdrop-filter: var(--liquid-glass-blur);
+  border: 0.5px solid var(--liquid-glass-border);
+  box-shadow: var(--liquid-glass-shadow);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.08);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Keyframe Animations */
+@keyframes appleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appleModalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Accessibility: Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
