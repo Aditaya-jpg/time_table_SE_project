@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>College Timetable Scheduler • SRS Demo</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div>
+          <h1 class="logo-title">UniScheduler</h1>
+          <p class="logo-subtitle">SRS CP-SAT Demo</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#courses" class="nav-item" data-section="courses">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Courses</span>
+        </a>
+        <a href="#sections" class="nav-item" data-section="sections">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Student Sections</span>
+        </a>
+        <a href="#faculty" class="nav-item" data-section="faculty">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Faculty</span>
+        </a>
+        <a href="#rooms" class="nav-item" data-section="rooms">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Classrooms &amp; Labs</span>
+        </a>
+        <a href="#slots" class="nav-item" data-section="slots">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Time Slots</span>
+        </a>
+        <div class="nav-divider"></div>
+        <a href="#generate" class="nav-item nav-action-generate" data-section="generate">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          <span>Generate Timetable</span>
+        </a>
+        <a href="#view" class="nav-item nav-action-view" data-section="view">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+          <span>View Timetable</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-pill status-ready" id="solverQuickBadge">
+          <span class="dot"></span>
+          <span id="quickStatusText">CP-SAT Ready</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h2 id="pageTitle">Dashboard</h2>
+          <span class="badge badge-subtle" id="deptBadge">CSE • AI • DS</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-secondary btn-sm" id="btnLoadSample" title="Load preconfigured sample dataset">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Load Sample Data</span>
+          </button>
+          <button class="btn btn-secondary btn-sm" id="btnResetData" title="Reset all data to empty">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            <span>Reset Demo Data</span>
+          </button>
+          <button class="btn btn-primary btn-sm" id="btnTopGenerate" title="Trigger OR-Tools CP-SAT Timetable Generation">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Generate Feasible Timetable</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Notification Toast Area -->
+      <div id="toast" class="toast hidden"></div>
+
+      <!-- SECTION: Dashboard -->
+      <section id="sec-dashboard" class="content-section active">
+        <!-- Summary KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon icon-blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-value" id="kpiCourses">0</span>
+              <span class="kpi-label">Course Offerings</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon icon-purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-value" id="kpiFaculty">0</span>
+              <span class="kpi-label">Faculty Members</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon icon-teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-value" id="kpiSections">0</span>
+              <span class="kpi-label">Student Sections</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon icon-orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-value" id="kpiRooms">0</span>
+              <span class="kpi-label">Classrooms &amp; Labs</span>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon icon-green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div class="kpi-info">
+              <span class="kpi-value" id="kpiSessions">0</span>
+              <span class="kpi-label">Required Sessions/Wk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Operations & Solver Status Banner -->
+        <div class="card status-card">
+          <div class="status-card-header">
+            <div>
+              <h3>Timetable Generation Engine • Google OR-Tools CP-SAT</h3>
+              <p class="text-muted">Exact Constraint Programming with independent 10-point hard constraint verification.</p>
+            </div>
+            <div id="solverStatusTag" class="badge badge-info">Status: Ready to Solve</div>
+          </div>
+          <div class="status-card-body">
+            <div class="metric-row">
+              <div class="metric-item">
+                <span class="metric-label">Engine</span>
+                <span class="metric-val">OR-Tools CP-SAT (Python)</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">Solve Time</span>
+                <span class="metric-val" id="statusSolveTime">&mdash;</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">Independent Validation</span>
+                <span class="metric-val" id="statusValidation">&mdash;</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label">Active Timetable</span>
+                <span class="metric-val" id="statusScheduleCount">0 scheduled sessions</span>
+              </div>
+            </div>
+
+            <!-- Validation Results Mini Ribbon -->
+            <div id="validationRibbon" class="validation-ribbon hidden">
+              <div class="validation-item" id="valFaculty">Faculty Clashes: 0</div>
+              <div class="validation-item" id="valSection">Section Clashes: 0</div>
+              <div class="validation-item" id="valRoom">Room Clashes: 0</div>
+              <div class="validation-item" id="valCapacity">Capacity Violations: 0</div>
+              <div class="validation-item" id="valDuration">Duration Violations: 0</div>
+            </div>
+
+            <div class="actions-row">
+              <button class="btn btn-primary" id="btnDashboardGenerate">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Run CP-SAT Solver Now</span>
+              </button>
+              <button class="btn btn-secondary" id="btnDashboardView">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+                <span>Open Timetable Visualizer</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Import Summary & Data Quality Card -->
+        <div class="card p-24" id="importSummaryCard" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <h3 style="font-size: 16px; font-weight: 700;">Institutional Dataset Summary • 5th Semester Timetables</h3>
+              <p class="text-muted text-sm">Extracted from <code style="color: #60a5fa;">timetables.md</code> covering B.Tech CSE Core, CSE (AI), and CSE (Data Science).</p>
+            </div>
+            <span class="badge badge-purple">Institutional Baseline</span>
+          </div>
+
+          <div class="metric-row" style="margin-bottom: 16px;">
+            <div class="metric-item">
+              <span class="metric-label">Course Codes</span>
+              <span class="metric-val" id="sumCourseCodes">20 Codes (62 Offerings)</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Faculty Identities</span>
+              <span class="metric-val" id="sumFaculty">16 Instructors</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Student Cohorts</span>
+              <span class="metric-val" id="sumSections">13 Sections + 2 Groups</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Distinct Venues</span>
+              <span class="metric-val" id="sumVenues">20 Venues (Unverified Cap)</span>
+            </div>
+          </div>
+
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-md); padding: 14px 18px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fbbf24; margin-bottom: 8px; font-size: 13px;">
+              <span>⚠️</span>
+              <span>Data Quality &amp; Unverified Constraints (SRS Transparent Handling):</span>
+            </div>
+            <ul style="font-size: 12px; color: #cbd5e1; margin-left: 20px; line-height: 1.6;" id="importIncompleteList">
+              <li><strong>Friday DS 12:00-13:00</strong>: Course code &amp; room missing in source (<code>– Dr. Rajesh Bhatia</code>). Flagged for review.</li>
+              <li><strong>Friday AI 12:00-13:00</strong>: Missing student section and room prefixed with <code>#</code> (<code>AIN5004 CN – Dr. Divya Bansal + Pooja #305</code>). Flagged for review.</li>
+              <li><strong>Self-Directed Projects &amp; Honours</strong>: DSP5101, CSP5101, AIP5101, DSH1001, AIH1001 scheduled without fixed room or faculty in source. Handled without phantom resource conflicts.</li>
+              <li><strong>Shared Faculty</strong>: Dr. Ravpreet deduplicated as one shared identity across CSE &amp; AI programmes.</li>
+              <li><strong>Faculty Title Variations</strong>: Shivani unified across Dr. Shivani / Ms. Shivani / Shivani with a review note.</li>
+              <li><strong>Course Groups</strong>: G1 and G2 preserved as distinct unverified groups without fabricating CSE section mappings.</li>
+              <li><strong>Room Capacities</strong>: Not defined in source timetable. Marked unverified; available for manual configuration in Classrooms &amp; Labs tab.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Academic Features Overview Grid -->
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>1. Course &amp; Multi-Session Model</h4>
+            <p>Courses specify weekly sessions (e.g. DBMS has 3 lectures + 1 lab), duration, required room types, and assigned faculty.</p>
+            <a href="#courses" class="card-link" data-section="courses">Manage Courses &rarr;</a>
+          </div>
+          <div class="feature-card">
+            <h4>2. Multi-Room Practical Sessions</h4>
+            <p>Allocates multiple laboratories simultaneously (e.g. Lab A + Lab B) when a large batch requires joint capacity.</p>
+            <a href="#rooms" class="card-link" data-section="rooms">Manage Rooms &amp; Labs &rarr;</a>
+          </div>
+          <div class="feature-card">
+            <h4>3. Cross-Department Coordination</h4>
+            <p>Coordinates shared faculty, shared venues, and shared courses (e.g. HS401 taken jointly by CSE-A and AI-A) without clash.</p>
+            <a href="#sections" class="card-link" data-section="sections">Manage Sections &rarr;</a>
+          </div>
+          <div class="feature-card">
+            <h4>4. Faculty Availability Grids</h4>
+            <p>Interactive weekly matrix allowing faculty to mark unavailable periods which the solver strictly respects.</p>
+            <a href="#faculty" class="card-link" data-section="faculty">Configure Faculty Availability &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Courses -->
+      <section id="sec-courses" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Course Offerings</h3>
+            <p class="text-muted">Configure course subjects, sessions per week, durations, and room requirements.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btnAddCourse">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Course</span>
+          </button>
+        </div>
+        <div class="card table-card">
+          <table class="data-table" id="coursesTable">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Course Name</th>
+                <th>Dept</th>
+                <th>Faculty / Co-Instructors</th>
+                <th>Target (Section / Group)</th>
+                <th>Type</th>
+                <th>Sessions/Wk</th>
+                <th>Duration</th>
+                <th>Room Allocation Mode &amp; Venues</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: Student Sections -->
+      <section id="sec-sections" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Student Sections</h3>
+            <p class="text-muted">Manage academic student cohorts and class strengths.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btnAddSection">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Section</span>
+          </button>
+        </div>
+        <div class="card table-card">
+          <table class="data-table" id="sectionsTable">
+            <thead>
+              <tr>
+                <th>Section ID</th>
+                <th>Section Name</th>
+                <th>Department</th>
+                <th>Semester / Year</th>
+                <th>Student Strength</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- Course Groups (G1 / G2) Section Mapping Card -->
+        <div class="card p-24" style="margin-top: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Course Cohort Groups (G1 &amp; G2) Section Mapping</h4>
+              <p class="text-muted text-sm">
+                In CSE, large lectures are taught to cohort groups <strong>G1</strong> and <strong>G2</strong> while tutorials and practicals are taken by individual student sections (CSE1–CSE7).
+                Map which CSE sections belong to each group below to enforce strict intra-group student conflict checks.
+              </p>
+            </div>
+            <span class="badge badge-warning" id="groupStatusBadge">Mapping Pending / Unverified</span>
+          </div>
+
+          <div class="card table-card" style="margin-bottom: 8px;">
+            <table class="data-table" id="groupsTable">
+              <thead>
+                <tr>
+                  <th>Group ID</th>
+                  <th>Group Name</th>
+                  <th>Department</th>
+                  <th>Mapped CSE Student Sections</th>
+                  <th>Verification Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="text-muted text-xs" style="margin-top: 8px; color: #94a3b8;">
+            * Note: If G1/G2 mappings are unassigned, the solver generates provisional schedules with non-overlapping group lectures, but marks student section conflict validation as "Unverified" until administrator mapping is confirmed.
+          </p>
+        </div>
+      </section>
+
+      <!-- SECTION: Faculty -->
+      <section id="sec-faculty" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Faculty Members</h3>
+            <p class="text-muted">Manage professors, lecturers, and their custom weekly availability schedules.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btnAddFaculty">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Faculty</span>
+          </button>
+        </div>
+        <div class="card table-card">
+          <table class="data-table" id="facultyTable">
+            <thead>
+              <tr>
+                <th>Faculty ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Availability Overview</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: Classrooms & Laboratories -->
+      <section id="sec-rooms" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Classrooms &amp; Laboratories</h3>
+            <p class="text-muted">Manage instructional venues, room types, seating capacities, and room availability.</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btnAddRoom">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Room / Lab</span>
+          </button>
+        </div>
+        <div class="card table-card">
+          <table class="data-table" id="roomsTable">
+            <thead>
+              <tr>
+                <th>Room ID</th>
+                <th>Room Name</th>
+                <th>Room Type</th>
+                <th>Capacity</th>
+                <th>Availability</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: Time Slots -->
+      <section id="sec-slots" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Time Slots &amp; Academic Bell Schedule</h3>
+            <p class="text-muted">Configure institutional working days, daily period blocks, and lunch break intervals.</p>
+          </div>
+        </div>
+        <div class="card p-24">
+          <div class="grid-2-col">
+            <div>
+              <h4>Working Days</h4>
+              <p class="text-muted text-sm">Active days in the academic week.</p>
+              <div id="daysList" class="tag-cloud"></div>
+            </div>
+            <div>
+              <h4>Break Boundaries</h4>
+              <p class="text-muted text-sm">Consecutive sessions (e.g. 2-slot labs) cannot span past these periods.</p>
+              <div id="breaksList" class="tag-cloud"></div>
+            </div>
+          </div>
+          <h4 style="margin-top: 24px; margin-bottom: 12px;">Daily Period Schedule</h4>
+          <table class="data-table" id="periodsTable">
+            <thead>
+              <tr>
+                <th>Period #</th>
+                <th>Label</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION: Generate Timetable -->
+      <section id="sec-generate" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Generate Feasible Timetable</h3>
+            <p class="text-muted">Run Google OR-Tools CP-SAT constraint solver against the current academic dataset.</p>
+          </div>
+        </div>
+
+        <div class="card p-24" style="margin-bottom: 24px;">
+          <div class="solver-hero">
+            <div class="solver-hero-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div>
+              <h3>Execute Constraint Programming Solver</h3>
+              <p class="text-muted">Formulates the discrete scheduling model with boolean variables, performs constraint propagation, and ensures 100% hard constraint satisfaction.</p>
+            </div>
+            <button class="btn btn-primary btn-lg" id="btnExecSolver">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <span>Solve With Google OR-Tools</span>
+            </button>
+          </div>
+
+          <!-- Solver Progress Spinner (Hidden by default) -->
+          <div id="solverLoader" class="solver-loader hidden">
+            <div class="spinner"></div>
+            <p>Google OR-Tools CP-SAT solving constraints in multi-threaded engine...</p>
+          </div>
+
+          <!-- Diagnostics & Output Box -->
+          <div id="solverOutput" class="solver-output hidden">
+            <div class="output-header">
+              <span id="outputTitle">Solver Results</span>
+              <span id="outputBadge" class="badge"></span>
+            </div>
+            <div id="outputContent" class="output-body"></div>
+          </div>
+        </div>
+
+        <!-- 10 Hard Constraints Reference Card -->
+        <div class="card p-24">
+          <h4>Guaranteed Hard Constraints in Model:</h4>
+          <div class="constraints-grid">
+            <div class="constraint-item"><span class="badge badge-success">HC-1</span> Faculty Conflict Prevention (No faculty double-booking)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-2</span> Student Section Conflict Prevention (No section double-booking)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-3</span> Classroom Conflict Prevention (No room double-booking)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-4</span> Laboratory Conflict Prevention (No lab double-booking)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-5</span> Faculty Availability Constraints (Respects unavailable periods)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-6</span> Room Capacity Enforcement (Total room cap &ge; student strength)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-7</span> Room Type Matching (Lectures in Classrooms, Practicals in Labs)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-8</span> Multi-Period Duration (Consecutive blocks, no break spanning)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-9</span> Multi-Room Practicals (Simultaneous allocation of $K$ rooms)</div>
+            <div class="constraint-item"><span class="badge badge-success">HC-10</span> Cross-Department Coordination (CSE, AI, DS joint coordination)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: View Timetable -->
+      <section id="sec-view" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <h3>Generated Timetable Visualizer</h3>
+            <p class="text-muted">Interactive weekly schedule matrix with multi-perspective views, print preview, and CSV export.</p>
+          </div>
+          <div class="view-controls">
+            <select id="programmeFilterSelect" class="form-control form-control-sm" style="max-width: 170px;">
+              <option value="ALL">All Programmes</option>
+              <option value="CSE">B.Tech CSE Core</option>
+              <option value="AI">B.Tech CSE (AI)</option>
+              <option value="DS">B.Tech CSE (Data Science)</option>
+            </select>
+            <div class="btn-group">
+              <button class="btn btn-sm btn-secondary active" data-view="section">Section-Wise</button>
+              <button class="btn btn-sm btn-secondary" data-view="faculty">Faculty-Wise</button>
+              <button class="btn btn-sm btn-secondary" data-view="room">Room-Wise</button>
+              <button class="btn btn-sm btn-secondary" data-view="master">Master View</button>
+            </div>
+            <select id="viewFilterSelect" class="form-control form-control-sm"></select>
+            <button class="btn btn-secondary btn-sm" id="btnPrintTimetable" title="Print this schedule">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              <span>Print</span>
+            </button>
+            <a href="/api/export-csv" class="btn btn-secondary btn-sm" id="btnExportCSV" download="college_timetable.csv" title="Download CSV">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export CSV</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Validation Summary Banner -->
+        <div id="timetableValBanner" class="val-summary-banner hidden">
+          <div class="val-badge" id="bannerValBadge">VALIDATED</div>
+          <div class="val-text" id="bannerValText">0 Conflicts Detected • 100% Constraints Satisfied</div>
+        </div>
+
+        <!-- Timetable Matrix Grid Canvas -->
+        <div class="card timetable-matrix-card" id="timetableMatrixContainer">
+          <div id="emptyTimetablePlaceholder" class="empty-state">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <h4>No Active Timetable</h4>
+            <p>Click "Generate Feasible Timetable" or load the sample dataset to view the schedule grid.</p>
+            <button class="btn btn-primary" id="btnEmptyGenerate">Generate Timetable Now</button>
+          </div>
+          <div id="timetableGridWrapper" class="timetable-grid-wrapper hidden">
+            <!-- Dynamic Grid Injected Here -->
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL: Add / Edit Course -->
+  <div id="courseModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="courseModalTitle">Add Course</h3>
+        <button class="modal-close" data-close="courseModal">&times;</button>
+      </div>
+      <form id="courseForm">
+        <input type="hidden" id="courseFormMode" value="add" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Course Code *</label>
+            <input type="text" id="cCode" class="form-control" placeholder="e.g. CS401" required />
+          </div>
+          <div class="form-group">
+            <label>Course Name *</label>
+            <input type="text" id="cName" class="form-control" placeholder="e.g. Database Management Systems" required />
+          </div>
+          <div class="form-group">
+            <label>Department *</label>
+            <select id="cDept" class="form-control" required>
+              <option value="CSE">CSE (Computer Science)</option>
+              <option value="AI">AI (Artificial Intelligence)</option>
+              <option value="DS">DS (Data Science)</option>
+              <option value="COMMON">COMMON (Cross-Department)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Faculty Assigned *</label>
+            <select id="cFaculty" class="form-control" required></select>
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label>Student Section(s) * (Hold Ctrl/Cmd to select multiple for shared courses)</label>
+            <select id="cSections" class="form-control" multiple required size="4"></select>
+          </div>
+          <div class="form-group">
+            <label>Session Type</label>
+            <select id="cType" class="form-control">
+              <option value="Lecture">Lecture</option>
+              <option value="Practical">Practical</option>
+              <option value="Lab">Lab</option>
+              <option value="Tutorial">Tutorial</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Sessions Per Week *</label>
+            <input type="number" id="cSessions" class="form-control" min="1" max="10" value="3" required />
+          </div>
+          <div class="form-group">
+            <label>Duration (Consecutive Periods) *</label>
+            <input type="number" id="cDuration" class="form-control" min="1" max="4" value="1" required />
+          </div>
+          <div class="form-group">
+            <label>Required Room Type</label>
+            <select id="cRoomType" class="form-control">
+              <option value="Classroom">Classroom</option>
+              <option value="Computer Lab">Computer Lab</option>
+              <option value="Seminar Hall">Seminar Hall</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Required Number of Rooms *</label>
+            <input type="number" id="cRoomsReq" class="form-control" min="1" max="5" value="1" title="For multi-room practicals requiring 2+ rooms simultaneously" required />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="courseModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Course</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Add / Edit Section -->
+  <div id="sectionModal" class="modal-overlay hidden">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3 id="sectionModalTitle">Add Section</h3>
+        <button class="modal-close" data-close="sectionModal">&times;</button>
+      </div>
+      <form id="sectionForm">
+        <input type="hidden" id="sectionFormMode" value="add" />
+        <div class="form-group">
+          <label>Section ID / Code *</label>
+          <input type="text" id="secId" class="form-control" placeholder="e.g. SEC_CSE_A" required />
+        </div>
+        <div class="form-group">
+          <label>Section Name *</label>
+          <input type="text" id="secName" class="form-control" placeholder="e.g. CSE-A" required />
+        </div>
+        <div class="form-group">
+          <label>Department</label>
+          <select id="secDept" class="form-control">
+            <option value="CSE">CSE</option>
+            <option value="AI">AI</option>
+            <option value="DS">DS</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Semester / Year</label>
+          <input type="text" id="secSem" class="form-control" value="Semester 4" />
+        </div>
+        <div class="form-group">
+          <label>Student Strength *</label>
+          <input type="number" id="secStrength" class="form-control" min="10" max="250" value="60" required />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="sectionModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Section</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Add / Edit Room -->
+  <div id="roomModal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="roomModalTitle">Add Classroom / Lab</h3>
+        <button class="modal-close" data-close="roomModal">&times;</button>
+      </div>
+      <form id="roomForm">
+        <input type="hidden" id="roomFormMode" value="add" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Room ID *</label>
+            <input type="text" id="rId" class="form-control" placeholder="e.g. ROOM_101" required />
+          </div>
+          <div class="form-group">
+            <label>Room Name *</label>
+            <input type="text" id="rName" class="form-control" placeholder="e.g. Classroom 101" required />
+          </div>
+          <div class="form-group">
+            <label>Room Type *</label>
+            <select id="rType" class="form-control" required>
+              <option value="Classroom">Classroom</option>
+              <option value="Computer Lab">Computer Lab</option>
+              <option value="Seminar Hall">Seminar Hall</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Capacity *</label>
+            <input type="number" id="rCap" class="form-control" min="10" max="500" value="65" required />
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 16px;">
+          <label>Room Availability (Click cells to toggle Available / Unavailable):</label>
+          <div id="roomAvailGrid" class="avail-picker-grid"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="roomModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Room</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Add / Edit Faculty & Availability Picker -->
+  <div id="facultyModal" class="modal-overlay hidden">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3 id="facultyModalTitle">Add Faculty &amp; Availability</h3>
+        <button class="modal-close" data-close="facultyModal">&times;</button>
+      </div>
+      <form id="facultyForm">
+        <input type="hidden" id="facultyFormMode" value="add" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Faculty ID *</label>
+            <input type="text" id="fId" class="form-control" placeholder="e.g. FAC_SHARMA" required />
+          </div>
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="fName" class="form-control" placeholder="e.g. Dr. Rajesh Sharma" required />
+          </div>
+          <div class="form-group">
+            <label>Department</label>
+            <select id="fDept" class="form-control">
+              <option value="CSE">CSE</option>
+              <option value="AI">AI</option>
+              <option value="DS">DS</option>
+              <option value="COMMON">COMMON</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Designation</label>
+            <input type="text" id="fDesig" class="form-control" value="Associate Professor" />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label style="font-weight: 600;">Faculty Weekly Availability Schedule:</label>
+            <div style="display: flex; gap: 12px; font-size: 12px;">
+              <span class="legend-item"><span class="legend-box box-avail"></span> Available</span>
+              <span class="legend-item"><span class="legend-box box-unavail"></span> Unavailable (Click to toggle)</span>
+            </div>
+          </div>
+          <p class="text-muted text-xs">Sessions will NEVER be assigned to this faculty member during unavailable periods.</p>
+          <div id="facultyAvailGrid" class="avail-picker-grid"></div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-close="facultyModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Faculty</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Configure Group Mapping -->
+  <div id="groupMappingModal" class="modal-overlay hidden">
+    <div class="modal-card modal-md">
+      <div class="modal-header">
+        <h3 id="groupMappingTitle">Configure Group Section Mapping</h3>
+        <button class="modal-close" data-close="groupMappingModal">&times;</button>
+      </div>
+      <form id="groupMappingForm">
+        <input type="hidden" id="mappingGroupId" />
+        <div style="margin-bottom: 12px;">
+          <p class="text-muted text-sm" id="mappingGroupDesc" style="margin-bottom: 12px; line-height: 1.5;">
+            Select which student sections belong to this cohort group. When sections are mapped, the solver will prevent group lectures from overlapping with any practicals or tutorials of these member sections.
+          </p>
+        </div>
+        <div class="form-group">
+          <label style="font-weight: 600; margin-bottom: 8px; display: block;">Select CSE Student Sections:</label>
+          <div id="groupSectionsCheckboxGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+            <!-- Dynamic Checkboxes injected by JS -->
+          </div>
+        </div>
+        <div class="modal-footer" style="margin-top: 20px;">
+          <button type="button" class="btn btn-secondary" data-close="groupMappingModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Group Mapping</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/timetable.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
