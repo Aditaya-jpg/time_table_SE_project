@@ -45,7 +45,7 @@
 					<polyline points="9 18 15 12 9 6"></polyline>
 				</svg>
 			</a>
-			<a href="timetableGrid.action" class="apple-btn-link">
+			<a href="gwt.jsp?page=timetableGrid" class="apple-btn-link">
 				<span>View Timetable Matrix</span>
 				<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 					<polyline points="9 18 15 12 9 6"></polyline>
@@ -124,7 +124,7 @@
 			</div>
 			<div class="apple-pill-group">
 				<a href="classSearch.action" class="apple-pill-btn-prominent">Class Search</a>
-				<a href="timetableGrid.action" class="apple-pill-btn">Timetable Matrix</a>
+				<a href="gwt.jsp?page=timetableGrid" class="apple-pill-btn">Timetable Matrix</a>
 				<a href="gwt.jsp?page=offerings" class="apple-pill-btn">Instructional Offerings</a>
 				<a href="gwt.jsp?page=solver" class="apple-pill-btn">Course Solver</a>
 				<a href="gwt.jsp?page=curricula" class="apple-pill-btn">Curricula</a>
@@ -146,8 +146,8 @@
 			</div>
 			<div class="apple-pill-group">
 				<a href="gwt.jsp?page=sectioning" class="apple-pill-btn-prominent">Scheduling Assistant</a>
-				<a href="sectioning.action" class="apple-pill-btn">Dashboard</a>
-				<a href="gwt.jsp?page=courseDemands" class="apple-pill-btn">Course Demands</a>
+				<a href="gwt.jsp?page=onlinesctdash" class="apple-pill-btn">Dashboard</a>
+				<a href="gwt.jsp?page=requests" class="apple-pill-btn">Course Requests</a>
 			</div>
 		</div>
 	</div>
@@ -167,7 +167,7 @@
 				</p>
 			</div>
 			<div class="apple-pill-group">
-				<a href="examSolver.action" class="apple-pill-btn-prominent">Exam Solver</a>
+				<a href="gwt.jsp?page=solver" class="apple-pill-btn-prominent">Exam Solver</a>
 				<a href="gwt.jsp?page=assignedExams" class="apple-pill-btn">Assigned Exams</a>
 				<a href="gwt.jsp?page=exams" class="apple-pill-btn">Exams Directory</a>
 			</div>
@@ -188,7 +188,7 @@
 			<div class="apple-pill-group">
 				<a href="gwt.jsp?page=rooms" class="apple-pill-btn-prominent">Room Availability</a>
 				<a href="gwt.jsp?page=events" class="apple-pill-btn">Events Portal</a>
-				<a href="events.action" class="apple-pill-btn">Add Event</a>
+				<a href="gwt.jsp?page=events#event=add" class="apple-pill-btn">Add Event</a>
 			</div>
 		</div>
 
@@ -229,8 +229,8 @@
 		<div class="apple-pill-group">
 			<a href="gwt.jsp?page=sessions" class="apple-pill-btn-prominent">Academic Sessions</a>
 			<a href="gwt.jsp?page=departments" class="apple-pill-btn">Departments</a>
-			<a href="gwt.jsp?page=roles" class="apple-pill-btn">Roles &amp; Permissions</a>
-			<a href="gwt.jsp?page=users" class="apple-pill-btn">User Accounts</a>
+			<a href="gwt.jsp?page=admin#type=roles" class="apple-pill-btn">Roles &amp; Permissions</a>
+			<a href="gwt.jsp?page=managers" class="apple-pill-btn">User Accounts</a>
 		</div>
 	</div>
 </div>
