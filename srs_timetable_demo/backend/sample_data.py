@@ -23,27 +23,27 @@ def get_sample_dataset() -> TimetableData:
     num_days = 5
     num_periods = 8
 
-    # 1. Actual Student Sections (13 distinct student cohorts)
+    # 1. Actual Student Sections (13 distinct practical batches)
     sections = [
-        Section(id="SEC_CSE1", name="CSE1", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_CSE2", name="CSE2", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_CSE3", name="CSE3", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_CSE4", name="CSE4", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_CSE5", name="CSE5", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_CSE6", name="CSE6", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_CSE7", name="CSE7", department="CSE", semester_year="5th Semester", strength=60, is_group=False, notes="Actual student section"),
-        Section(id="SEC_DS1", name="DS1", department="DS", semester_year="5th Semester", strength=50, is_group=False, notes="Actual student section"),
-        Section(id="SEC_DS2", name="DS2", department="DS", semester_year="5th Semester", strength=50, is_group=False, notes="Actual student section"),
-        Section(id="SEC_DS3", name="DS3", department="DS", semester_year="5th Semester", strength=50, is_group=False, notes="Actual student section"),
-        Section(id="SEC_DS4", name="DS4", department="DS", semester_year="5th Semester", strength=50, is_group=False, notes="Actual student section"),
-        Section(id="SEC_AI1", name="AI1", department="AI", semester_year="5th Semester", strength=45, is_group=False, notes="Actual student section"),
-        Section(id="SEC_AI2", name="AI2", department="AI", semester_year="5th Semester", strength=45, is_group=False, notes="Actual student section"),
+        Section(id="SEC_CSE1", name="CSE1", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=1, sid_end=20, strength=20, is_group=False, notes="Practical batch (SID 1–20)"),
+        Section(id="SEC_CSE2", name="CSE2", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=21, sid_end=40, strength=20, is_group=False, notes="Practical batch (SID 21–40)"),
+        Section(id="SEC_CSE3", name="CSE3", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=41, sid_end=60, strength=20, is_group=False, notes="Practical batch (SID 41–60)"),
+        Section(id="SEC_CSE4", name="CSE4", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=61, sid_end=80, strength=20, is_group=False, notes="Practical batch (SID 61–80: 9 in G1, 11 in G2)"),
+        Section(id="SEC_CSE5", name="CSE5", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=81, sid_end=100, strength=20, is_group=False, notes="Practical batch (SID 81–100)"),
+        Section(id="SEC_CSE6", name="CSE6", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=101, sid_end=120, strength=20, is_group=False, notes="Practical batch (SID 101–120)"),
+        Section(id="SEC_CSE7", name="CSE7", department="CSE", semester_year="5th Semester", division_type="Practical Batch", sid_start=121, sid_end=138, strength=18, is_group=False, notes="Practical batch (SID 121–138)"),
+        Section(id="SEC_DS1", name="DS1", department="DS", semester_year="5th Semester", division_type="Practical Batch", sid_start=1, sid_end=15, strength=15, is_group=False, notes="Practical batch (SID 1–15)"),
+        Section(id="SEC_DS2", name="DS2", department="DS", semester_year="5th Semester", division_type="Practical Batch", sid_start=16, sid_end=30, strength=15, is_group=False, notes="Practical batch (SID 16–30)"),
+        Section(id="SEC_DS3", name="DS3", department="DS", semester_year="5th Semester", division_type="Practical Batch", sid_start=31, sid_end=45, strength=15, is_group=False, notes="Practical batch (SID 31–45)"),
+        Section(id="SEC_DS4", name="DS4", department="DS", semester_year="5th Semester", division_type="Practical Batch", sid_start=46, sid_end=60, strength=15, is_group=False, notes="Practical batch (SID 46–60)"),
+        Section(id="SEC_AI1", name="AI1", department="AI", semester_year="5th Semester", division_type="Practical Batch", sid_start=1, sid_end=15, strength=15, is_group=False, notes="Practical batch (SID 1–15)"),
+        Section(id="SEC_AI2", name="AI2", department="AI", semester_year="5th Semester", division_type="Practical Batch", sid_start=16, sid_end=30, strength=15, is_group=False, notes="Practical batch (SID 16–30)"),
     ]
 
-    # 2. Course Groups (Separate CourseGroup entities for curriculum lecture groups)
+    # 2. Course Groups (Separate CourseGroup entities for lecture divisions defined by SID ranges)
     course_groups = [
-        CourseGroup(id="GRP_G1", name="G1", department="CSE", section_ids=[], is_verified=False, notes="Curriculum course group for CSE lectures. Group membership unverified pending administrator mapping."),
-        CourseGroup(id="GRP_G2", name="G2", department="CSE", section_ids=[], is_verified=False, notes="Curriculum course group for CSE lectures. Group membership unverified pending administrator mapping."),
+        CourseGroup(id="GRP_G1", name="G1", department="CSE", division_type="Lecture Division", sid_start=1, sid_end=69, strength=69, is_verified=True, notes="Lecture division G1 (SID 1–69, 69 students)"),
+        CourseGroup(id="GRP_G2", name="G2", department="CSE", division_type="Lecture Division", sid_start=70, sid_end=138, strength=69, is_verified=True, notes="Lecture division G2 (SID 70–138, 69 students)"),
     ]
 
     # 3. Faculty Members (16 actual identities, zero unused TBA guides)
@@ -1317,7 +1317,9 @@ def get_sample_dataset() -> TimetableData:
             "DSN_INCOMPLETE — Unspecified Course (1 session)"
         ],
         unverified_notes=[
-            "G1 and G2 course groups have unverified section memberships pending administrator mapping",
+            "CSE: 138 distinct students (G1: SID 1–69, G2: SID 70–138; Practical batches CSE1–CSE7)",
+            "AI: 30 distinct students (AI Shared: SID 1–30; Practical batches AI1–AI2)",
+            "DS: 60 distinct students (DS Shared: SID 1–60; Practical batches DS1–DS4)",
             "Room capacities not specified in institutional source timetable (all marked unverified)",
             "Shivani faculty identity has title/spelling variants in source (Dr. / Ms. / Shivani)"
         ],

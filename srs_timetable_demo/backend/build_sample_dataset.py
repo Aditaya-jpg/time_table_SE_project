@@ -8,24 +8,24 @@ import json
 
 def generate_sample_data_py():
     sections = [
-        ("SEC_CSE1", "CSE1", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_CSE2", "CSE2", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_CSE3", "CSE3", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_CSE4", "CSE4", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_CSE5", "CSE5", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_CSE6", "CSE6", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_CSE7", "CSE7", "CSE", "5th Semester", 60, "Actual student section"),
-        ("SEC_DS1", "DS1", "DS", "5th Semester", 50, "Actual student section"),
-        ("SEC_DS2", "DS2", "DS", "5th Semester", 50, "Actual student section"),
-        ("SEC_DS3", "DS3", "DS", "5th Semester", 50, "Actual student section"),
-        ("SEC_DS4", "DS4", "DS", "5th Semester", 50, "Actual student section"),
-        ("SEC_AI1", "AI1", "AI", "5th Semester", 45, "Actual student section"),
-        ("SEC_AI2", "AI2", "AI", "5th Semester", 45, "Actual student section"),
+        ("SEC_CSE1", "CSE1", "CSE", "5th Semester", "Practical Batch", 1, 20, 20, "Practical batch (SID 1–20)"),
+        ("SEC_CSE2", "CSE2", "CSE", "5th Semester", "Practical Batch", 21, 40, 20, "Practical batch (SID 21–40)"),
+        ("SEC_CSE3", "CSE3", "CSE", "5th Semester", "Practical Batch", 41, 60, 20, "Practical batch (SID 41–60)"),
+        ("SEC_CSE4", "CSE4", "CSE", "5th Semester", "Practical Batch", 61, 80, 20, "Practical batch (SID 61–80: 9 in G1, 11 in G2)"),
+        ("SEC_CSE5", "CSE5", "CSE", "5th Semester", "Practical Batch", 81, 100, 20, "Practical batch (SID 81–100)"),
+        ("SEC_CSE6", "CSE6", "CSE", "5th Semester", "Practical Batch", 101, 120, 20, "Practical batch (SID 101–120)"),
+        ("SEC_CSE7", "CSE7", "CSE", "5th Semester", "Practical Batch", 121, 138, 18, "Practical batch (SID 121–138)"),
+        ("SEC_DS1", "DS1", "DS", "5th Semester", "Practical Batch", 1, 15, 15, "Practical batch (SID 1–15)"),
+        ("SEC_DS2", "DS2", "DS", "5th Semester", "Practical Batch", 16, 30, 15, "Practical batch (SID 16–30)"),
+        ("SEC_DS3", "DS3", "DS", "5th Semester", "Practical Batch", 31, 45, 15, "Practical batch (SID 31–45)"),
+        ("SEC_DS4", "DS4", "DS", "5th Semester", "Practical Batch", 46, 60, 15, "Practical batch (SID 46–60)"),
+        ("SEC_AI1", "AI1", "AI", "5th Semester", "Practical Batch", 1, 15, 15, "Practical batch (SID 1–15)"),
+        ("SEC_AI2", "AI2", "AI", "5th Semester", "Practical Batch", 16, 30, 15, "Practical batch (SID 16–30)"),
     ]
 
     course_groups = [
-        ("GRP_G1", "G1", "CSE", "Curriculum course group for CSE lectures. Group membership unverified pending administrator mapping."),
-        ("GRP_G2", "G2", "CSE", "Curriculum course group for CSE lectures. Group membership unverified pending administrator mapping."),
+        ("GRP_G1", "G1", "CSE", "Lecture Division", 1, 69, 69, "Lecture division G1 (SID 1–69, 69 students)"),
+        ("GRP_G2", "G2", "CSE", "Lecture Division", 70, 138, 69, "Lecture division G2 (SID 70–138, 69 students)"),
     ]
 
     faculty = [
@@ -458,22 +458,22 @@ def generate_sample_data_py():
         '    num_days = 5',
         '    num_periods = 8',
         '',
-        '    # 1. Actual Student Sections (13 distinct student cohorts)',
+        '    # 1. Actual Student Sections (13 distinct practical batches)',
         '    sections = ['
     ]
 
-    for sid, sname, dept, sem, strength, notes in sections:
-        py_lines.append(f'        Section(id="{sid}", name="{sname}", department="{dept}", semester_year="{sem}", strength={strength}, is_group=False, notes="{notes}"),')
+    for sid, sname, dept, sem, div_type, start, end, strength, notes in sections:
+        py_lines.append(f'        Section(id="{sid}", name="{sname}", department="{dept}", semester_year="{sem}", division_type="{div_type}", sid_start={start}, sid_end={end}, strength={strength}, is_group=False, notes="{notes}"),')
 
     py_lines.extend([
         '    ]',
         '',
-        '    # 2. Course Groups (Separate CourseGroup entities for curriculum lecture groups)',
+        '    # 2. Course Groups (Separate CourseGroup entities for lecture divisions defined by SID ranges)',
         '    course_groups = ['
     ])
 
-    for gid, gname, dept, notes in course_groups:
-        py_lines.append(f'        CourseGroup(id="{gid}", name="{gname}", department="{dept}", section_ids=[], is_verified=False, notes="{notes}"),')
+    for gid, gname, dept, div_type, start, end, strength, notes in course_groups:
+        py_lines.append(f'        CourseGroup(id="{gid}", name="{gname}", department="{dept}", division_type="{div_type}", sid_start={start}, sid_end={end}, strength={strength}, is_verified=True, notes="{notes}"),')
 
     py_lines.extend([
         '    ]',
@@ -570,7 +570,9 @@ def generate_sample_data_py():
         '            "DSN_INCOMPLETE — Unspecified Course (1 session)"',
         '        ],',
         '        unverified_notes=[',
-        '            "G1 and G2 course groups have unverified section memberships pending administrator mapping",',
+        '            "CSE: 138 distinct students (G1: SID 1–69, G2: SID 70–138; Practical batches CSE1–CSE7)",',
+        '            "AI: 30 distinct students (AI Shared: SID 1–30; Practical batches AI1–AI2)",',
+        '            "DS: 60 distinct students (DS Shared: SID 1–60; Practical batches DS1–DS4)",',
         '            "Room capacities not specified in institutional source timetable (all marked unverified)",',
         '            "Shivani faculty identity has title/spelling variants in source (Dr. / Ms. / Shivani)"',
         '        ],',

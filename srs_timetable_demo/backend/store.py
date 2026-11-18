@@ -31,8 +31,14 @@ class DataStore:
                     content = f.read()
                     if content.strip():
                         loaded = TimetableData.model_validate_json(content)
-                        # Check if loaded data has the new 54 offerings / course groups structure
-                        if loaded.course_groups and len(loaded.courses) == 54:
+                        # Check if loaded data has the new 54 offerings, course groups, and SID ranges
+                        if (
+                            loaded.course_groups
+                            and len(loaded.courses) == 54
+                            and loaded.sections
+                            and loaded.sections[0].sid_start is not None
+                            and any(s.id == "SEC_CSE1" and s.strength == 20 for s in loaded.sections)
+                        ):
                             self._data = loaded
                             return
             except Exception as e:

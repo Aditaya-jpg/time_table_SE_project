@@ -4,32 +4,94 @@ Uses Pydantic for validation and serialization.
 Audited and corrected for exact 5th Semester Institutional Timetable Data.
 """
 
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Set
 from pydantic import BaseModel, Field
 
 
 class Section(BaseModel):
-    """Represents an actual student cohort (e.g. CSE1-CSE7, DS1-DS4, AI1-AI2)."""
-    id: str
-    name: str  # e.g., "CSE1", "DS1", "AI1"
+    """Represents an academic student division (e.g. practical batch or lecture cohort)."""
+    id: str  # e.g., "SEC_CSE1", "SEC_AI1", "SEC_DS1"
+    name: str  # e.g., "CSE1", "AI1", "DS1"
     department: str  # "CSE", "AI", "DS"
     semester_year: str = "5th Semester"
-    strength: int = 60  # Number of students
+    division_type: str = "Practical Batch"  # "Practical Batch", "Lecture Division", "Lecture Cohort"
+    sid_start: int = 1
+    sid_end: int = 20
+    strength: int = 20  # Number of distinct students in SID range
     is_group: bool = False
     notes: Optional[str] = None
 
 
 class CourseGroup(BaseModel):
     """
-    Represents an unstated curriculum course group (e.g. G1, G2 in CSE).
-    Memberships can be configured by an administrator; marked unverified until configured.
+    Represents a curriculum course division for lectures (e.g. G1, G2 in CSE).
+    Defined directly through SID ranges (G1: SID 1-69, G2: SID 70-138).
     """
     id: str  # e.g., "GRP_G1", "GRP_G2"
     name: str  # "G1", "G2"
     department: str = "CSE"
-    section_ids: List[str] = Field(default_factory=list)  # Mapped section IDs e.g. ["SEC_CSE1", ...]
-    is_verified: bool = False  # True once mapped by administrator
-    notes: Optional[str] = None
+    division_type: str = "Lecture Division"
+    sid_start: int = 1
+    sid_end: int = 69
+    strength: int = 69
+    section_ids: List[str] = Field(default_factory=list)  # Preserved for backward API compatibility
+    is_verified: bool = True  # Verified by definition through SID ranges
+    notes: Optional[str] = "Defined by SID range"
+
+
+# Static SID Registry for authoritative student ranges
+STUDENT_DIVISIONS = {
+    # CSE (Total 138 students: CSE:SID:1 .. CSE:SID:138)
+    "GRP_G1": {"dept": "CSE", "start": 1, "end": 69, "type": "Lecture Division", "name": "G1"},
+    "G1": {"dept": "CSE", "start": 1, "end": 69, "type": "Lecture Division", "name": "G1"},
+    "GRP_G2": {"dept": "CSE", "start": 70, "end": 138, "type": "Lecture Division", "name": "G2"},
+    "G2": {"dept": "CSE", "start": 70, "end": 138, "type": "Lecture Division", "name": "G2"},
+    "SEC_CSE1": {"dept": "CSE", "start": 1, "end": 20, "type": "Practical Batch", "name": "CSE1"},
+    "SEC_CSE2": {"dept": "CSE", "start": 21, "end": 40, "type": "Practical Batch", "name": "CSE2"},
+    "SEC_CSE3": {"dept": "CSE", "start": 41, "end": 60, "type": "Practical Batch", "name": "CSE3"},
+    "SEC_CSE4": {"dept": "CSE", "start": 61, "end": 80, "type": "Practical Batch", "name": "CSE4"},
+    "SEC_CSE5": {"dept": "CSE", "start": 81, "end": 100, "type": "Practical Batch", "name": "CSE5"},
+    "SEC_CSE6": {"dept": "CSE", "start": 101, "end": 120, "type": "Practical Batch", "name": "CSE6"},
+    "SEC_CSE7": {"dept": "CSE", "start": 121, "end": 138, "type": "Practical Batch", "name": "CSE7"},
+
+    # AI (Total 30 students: AI:SID:1 .. AI:SID:30)
+    "SEC_AI1": {"dept": "AI", "start": 1, "end": 15, "type": "Practical Batch", "name": "AI1"},
+    "SEC_AI2": {"dept": "AI", "start": 16, "end": 30, "type": "Practical Batch", "name": "AI2"},
+    "GRP_AI_SHARED": {"dept": "AI", "start": 1, "end": 30, "type": "Lecture Cohort", "name": "AI Shared"},
+
+    # DS (Total 60 students: DS:SID:1 .. DS:SID:60)
+    "SEC_DS1": {"dept": "DS", "start": 1, "end": 15, "type": "Practical Batch", "name": "DS1"},
+    "SEC_DS2": {"dept": "DS", "start": 16, "end": 30, "type": "Practical Batch", "name": "DS2"},
+    "SEC_DS3": {"dept": "DS", "start": 31, "end": 45, "type": "Practical Batch", "name": "DS3"},
+    "SEC_DS4": {"dept": "DS", "start": 46, "end": 60, "type": "Practical Batch", "name": "DS4"},
+    "GRP_DS_SHARED": {"dept": "DS", "start": 1, "end": 60, "type": "Lecture Cohort", "name": "DS Shared"},
+}
+
+
+def get_course_student_ids(course: "Course") -> Set[str]:
+    """
+    Computes the exact set of namespaced student identifiers for a course offering.
+    Uses the authoritative SID ranges:
+    - Distinct strength is len(student_ids) (set union).
+    """
+    sids: Set[str] = set()
+
+    # 1. Course Group (e.g. GRP_G1, GRP_G2)
+    if course.group_id and course.group_id in STUDENT_DIVISIONS:
+        info = STUDENT_DIVISIONS[course.group_id]
+        dept = info["dept"]
+        for sid in range(info["start"], info["end"] + 1):
+            sids.add(f"{dept}:SID:{sid}")
+
+    # 2. Section IDs (e.g. SEC_CSE1..SEC_CSE7, SEC_AI1..SEC_AI2, SEC_DS1..SEC_DS4)
+    for sec_id in course.section_ids:
+        if sec_id in STUDENT_DIVISIONS:
+            info = STUDENT_DIVISIONS[sec_id]
+            dept = info["dept"]
+            for sid in range(info["start"], info["end"] + 1):
+                sids.add(f"{dept}:SID:{sid}")
+
+    return sids
 
 
 class Faculty(BaseModel):

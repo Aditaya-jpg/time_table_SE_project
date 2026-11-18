@@ -1,0 +1,92 @@
+Day,Start Time,End Time,Course Code,Course Name,Department,Session Type,Session Index,Faculty / Co-Instructors,Section / Group,Room Allocation Mode,Room(s),Room Capacity,Student Strength
+Monday,09:00,10:00,CSN5003,CSN5003 SE (G1),CSE,Lecture,Session 1,Dr. Tejinder,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Monday,10:00,11:00,CSN5001,CSN5001 TOC (G1),CSE,Lecture,Session 1,Dr. Sandeep Harit,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Monday,10:00,11:00,CSN5003,CSN5003 SE (G2),CSE,Lecture,Session 1,Dr. Tejinder,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L30,,69
+Monday,10:00,12:00,DSN5001,DSN5001 DAIR Lab (DS2+DS3),DS,Practical,Session 1,Dr. Suraj Srivastava,DS2; DS3,SIMULTANEOUS_BUNDLE,Room 301; Computer Lab CL14,,30
+Monday,10:00,12:00,DSN5002,DSN5002 ATDS Lab (DS1),DS,Practical,Session 1,Dr. Manish Kumar,DS1,SINGLE_FROM_ELIGIBLE,Room 402,,15
+Monday,11:00,13:00,AIN5002,AIN5002 DL Lab (AI2),AI,Practical,Session 1,Dr. Padmavati,AI2,SINGLE_FROM_ELIGIBLE,Computer Lab CL5,,15
+Monday,11:00,13:00,AIN5004,AIN5004 CN Lab (AI1),AI,Practical,Session 1,"Dr. Divya Bansal, Pooja",AI1,SINGLE_FROM_ELIGIBLE,Computer Lab CL13,,15
+Monday,11:00,12:00,CSN5001,"CSN5001 TOC Tut (CSE3,CSE4)",CSE,Tutorial,Session 1,"Dr. Sandeep Harit, Dr. Ravpreet",CSE3; CSE4,SIMULTANEOUS_BUNDLE,Room 304; Room 306,,40
+Monday,12:00,13:00,CSN5001,"CSN5001 TOC Tut (CSE1,CSE2)",CSE,Tutorial,Session 1,"Dr. Sandeep Harit, Dr. Ravpreet",CSE1; CSE2,SIMULTANEOUS_BUNDLE,Room 304; Room 306,,40
+Monday,12:00,13:00,DSN5004,DSN5004 IoT,DS,Lecture,Session 1,Ms. Ishita,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,60
+Monday,14:00,15:00,AIN5001,AIN5001 TOC (L),AI,Lecture,Session 1,Dr. Ravpreet,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Monday,14:00,15:00,CSN5001,CSN5001 TOC (G2),CSE,Lecture,Session 1,Dr. Sandeep Harit,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Monday,15:00,16:00,AIN5002,AIN5002 DL,AI,Lecture,Session 1,Dr. Padmavati,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Monday,15:00,16:00,CSN5002,CSN5002 SC (G1),CSE,Lecture,Session 1,Dr. Dipika,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Monday,15:00,16:00,CSN5004,CSN5004 DBMS (G2),CSE,Lecture,Session 1,Dr. Shilpa,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L22,,69
+Monday,15:00,16:00,DSN5002,DSN5002 ATDS,DS,Lecture,Session 1,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60
+Monday,16:00,17:00,AIM1003,MSC L (AIM1003 HMI),AI,Lecture,Session 1,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Monday,16:00,17:00,CSM1003,MSC L (CSM1003 DBMS),CSE,Lecture,Session 1,Dr. Pravneet Kaur,CSE1; CSE2; CSE3; CSE4; CSE5; CSE6; CSE7,SINGLE_FROM_ELIGIBLE,Lecture Hall L22,,138
+Monday,16:00,17:00,DSM1003,MSC L (DSM1003 ATDS),DS,Lecture,Session 1,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60
+Tuesday,09:00,10:00,AIN5003,AIN5003 HMI,AI,Lecture,Session 1,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,30
+Tuesday,09:00,11:00,CSN5002,"CSN5002 SC Lab (CSE5,CSE6)",CSE,Practical,Session 1,Dr. Dipika,CSE5; CSE6,SINGLE_FROM_ELIGIBLE,Room 305,,40
+Tuesday,09:00,10:00,DSN5001,DSN5001 DAIR,DS,Lecture,Session 1,Dr. Suraj Srivastava,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Room 407,,60
+Tuesday,10:00,11:00,AIN5004,AIN5004 CN,AI,Lecture,Session 1,"Dr. Divya Bansal, Pooja",AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Tuesday,10:00,11:00,DSN5003,DSN5003 SE,DS,Lecture,Session 1,Dr. Rajesh Bhatia,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60
+Tuesday,11:00,13:00,AIN5002,AIN5002 DL Lab (AI1),AI,Practical,Session 1,Dr. Padmavati,AI1,SINGLE_FROM_ELIGIBLE,Computer Lab CL13,,15
+Tuesday,11:00,13:00,AIN5003,AIN5003 HMI Lab (AI2),AI,Practical,Session 1,Dr. Alka Jindal,AI2,SINGLE_FROM_ELIGIBLE,Computer Lab CL14,,15
+Tuesday,11:00,12:00,CSN5001,CSN5001 TOC (G2),CSE,Lecture,Session 2,Dr. Sandeep Harit,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L26,,69
+Tuesday,11:00,12:00,CSN5004,CSN5004 DBMS (G1),CSE,Lecture,Session 1,Dr. Shilpa,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,69
+Tuesday,11:00,13:00,DSN5001,DSN5001 DAIR Lab (DS4),DS,Practical,Session 1,Dr. Suraj Srivastava,DS4,SINGLE_FROM_ELIGIBLE,Room 402,,15
+Tuesday,11:00,13:00,DSN5002,DSN5002 ATDS Lab (DS2),DS,Practical,Session 1,Dr. Manish Kumar,DS2,SINGLE_FROM_ELIGIBLE,Room 301,,15
+Tuesday,12:00,13:00,CSN5002,CSN5002 SC (G1),CSE,Lecture,Session 2,Dr. Dipika,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,69
+Tuesday,12:00,13:00,CSN5004,CSN5004 DBMS (G2),CSE,Lecture,Session 2,Dr. Shilpa,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,69
+Tuesday,14:00,15:00,CSN5001,"CSN5001 TOC Tut (CSE5,CSE6)",CSE,Tutorial,Session 1,"Dr. Sandeep Harit, Dr. Ravpreet",CSE5; CSE6,SIMULTANEOUS_BUNDLE,Room 301; Room 306,,40
+Tuesday,15:00,16:00,CSN5001,CSN5001 TOC Tut (CSE7),CSE,Tutorial,Session 1,"Dr. Sandeep Harit, Dr. Ravpreet",CSE7,SINGLE_FROM_ELIGIBLE,Room 304,,18
+Tuesday,15:00,16:00,DSN5004,DSN5004 IoT,DS,Lecture,Session 2,Ms. Ishita,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,60
+Tuesday,16:00,17:00,AIM1003,MSC L (AIM1003 HMI),AI,Lecture,Session 2,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Tuesday,16:00,17:00,CSM1003,MSC L (CSM1003 DBMS),CSE,Lecture,Session 2,Dr. Pravneet Kaur,CSE1; CSE2; CSE3; CSE4; CSE5; CSE6; CSE7,SINGLE_FROM_ELIGIBLE,Lecture Hall L19,,138
+Tuesday,16:00,17:00,DSM1003,MSC L (DSM1003 ATDS),DS,Lecture,Session 2,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60
+Wednesday,08:00,10:00,CSN5004,"CSN5004 DBMS Lab (CSE1,CSE2)",CSE,Practical,Session 1,Dr. Shilpa,CSE1; CSE2,SIMULTANEOUS_BUNDLE,Room 306; Room 402,,40
+Wednesday,09:00,10:00,AIN5001,AIN5001 TOC (L),AI,Lecture,Session 2,Dr. Ravpreet,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,30
+Wednesday,10:00,11:00,AIN5002,AIN5002 DL,AI,Lecture,Session 2,Dr. Padmavati,AI1; AI2,SINGLE_FROM_ELIGIBLE,Room 305,,30
+Wednesday,10:00,12:00,CSN5003,"CSN5003 SE Lab (CSE5,CSE6)",CSE,Practical,Session 1,"Dr. Tejinder, Shivani",CSE5; CSE6,SIMULTANEOUS_BUNDLE,Computer Lab CL5; Computer Lab CL13,,40
+Wednesday,10:00,12:00,CSN5004,CSN5004 DBMS Lab (CSE7),CSE,Practical,Session 1,Dr. Shilpa,CSE7,SINGLE_FROM_ELIGIBLE,Computer Lab CL14,,18
+Wednesday,10:00,11:00,DSN5001,DSN5001 DAIR,DS,Lecture,Session 2,Dr. Suraj Srivastava,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L405,,60
+Wednesday,11:00,12:00,AIN5003,AIN5003 HMI,AI,Lecture,Session 2,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,30
+Wednesday,11:00,13:00,CSN5002,"CSN5002 SC Lab (CSE1,CSE2,CSE3,CSE4)",CSE,Practical,Session 1,Dr. Dipika,CSE1; CSE2; CSE3; CSE4,SINGLE_FROM_ELIGIBLE,Data Science Lab,,80
+Wednesday,11:00,13:00,DSN5002,DSN5002 ATDS Lab (DS3+DS4),DS,Practical,Session 1,Dr. Manish Kumar,DS3; DS4,SINGLE_FROM_ELIGIBLE,Room 305,,30
+Wednesday,11:00,13:00,DSN5003,DSN5003 SE Lab (DS1+DS2),DS,Practical,Session 1,Dr. Rajesh Bhatia,DS1; DS2,SIMULTANEOUS_BUNDLE,Room 301; Room 306,,30
+Wednesday,12:00,13:00,AIN5004,AIN5004 CN,AI,Lecture,Session 2,"Dr. Divya Bansal, Pooja",AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Wednesday,14:00,15:00,CSN5001,CSN5001 TOC (G1),CSE,Lecture,Session 2,Dr. Sandeep Harit,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Wednesday,14:00,15:00,CSN5002,CSN5002 SC (G2),CSE,Lecture,Session 1,Dr. Dipika,G2,SINGLE_FROM_ELIGIBLE,Room 405,,69
+Wednesday,14:00,16:00,DSN5001,DSN5001 DAIR Lab (DS1),DS,Practical,Session 1,Dr. Suraj Srivastava,DS1,SINGLE_FROM_ELIGIBLE,Room 402,,15
+Wednesday,14:00,16:00,DSN5003,DSN5003 SE Lab (DS3+DS4),DS,Practical,Session 1,Dr. Rajesh Bhatia,DS3; DS4,SIMULTANEOUS_BUNDLE,Room 303; Room 306,,30
+Wednesday,15:00,16:00,CSN5001,CSN5001 TOC (G2),CSE,Lecture,Session 3,Dr. Sandeep Harit,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Wednesday,16:00,17:00,AIM1003,MSC L (AIM1003 HMI),AI,Lecture,Session 3,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Wednesday,16:00,17:00,CSM1003,MSC L (CSM1003 DBMS),CSE,Lecture,Session 3,Dr. Pravneet Kaur,CSE1; CSE2; CSE3; CSE4; CSE5; CSE6; CSE7,SINGLE_FROM_ELIGIBLE,Lecture Hall L19,,138
+Wednesday,16:00,17:00,DSM1003,MSC L (DSM1003 ATDS),DS,Lecture,Session 3,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60
+Thursday,08:00,09:00,AIN5001,AIN5001 TOC (L) Backlog,AI,Lecture,Session 1,Dr. Ravpreet,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,30
+Thursday,09:00,10:00,AIN5001,AIN5001 TOC (L),AI,Lecture,Session 3,Dr. Ravpreet,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,30
+Thursday,09:00,11:00,CSN5003,"CSN5003 SE Lab (CSE3,CSE4)",CSE,Practical,Session 1,"Dr. Tejinder, Shivani",CSE3; CSE4,SINGLE_FROM_ELIGIBLE,Room 301,,40
+Thursday,09:00,10:00,DSN5001,DSN5001 DAIR,DS,Lecture,Session 3,Dr. Suraj Srivastava,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L405,,60
+Thursday,10:00,11:00,DSN5003,DSN5003 SE,DS,Lecture,Session 2,Dr. Rajesh Bhatia,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60
+Thursday,11:00,12:00,AIN5001,AIN5001 TOC Tut (AI1+AI2),AI,Tutorial,Session 1,Dr. Ravpreet,AI1; AI2,SINGLE_FROM_ELIGIBLE,Room 402,,30
+Thursday,11:00,12:00,CSN5002,CSN5002 SC (G2),CSE,Lecture,Session 2,Dr. Dipika,G2,SINGLE_FROM_ELIGIBLE,Room 405,,69
+Thursday,11:00,12:00,CSN5003,CSN5003 SE (G1),CSE,Lecture,Session 2,Dr. Tejinder,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Thursday,12:00,13:00,AIN5002,AIN5002 DL,AI,Lecture,Session 3,Dr. Padmavati,AI1; AI2,SINGLE_FROM_ELIGIBLE,Room 305,,30
+Thursday,12:00,13:00,CSN5003,CSN5003 SE (G2),CSE,Lecture,Session 3,Dr. Tejinder,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L22,,69
+Thursday,12:00,13:00,CSN5004,CSN5004 DBMS (G1),CSE,Lecture,Session 2,Dr. Shilpa,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,69
+Thursday,12:00,13:00,DSN5002,DSN5002 ATDS,DS,Lecture,Session 2,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L405,,60
+Thursday,14:00,16:00,CSN5003,CSN5003 SE Lab (CSE7),CSE,Practical,Session 1,"Dr. Tejinder, Shivani",CSE7,SINGLE_FROM_ELIGIBLE,Room 306,,18
+Thursday,14:00,16:00,CSN5004,"CSN5004 DBMS Lab (CSE5,CSE6)",CSE,Practical,Session 1,Dr. Shilpa,CSE5; CSE6,SIMULTANEOUS_BUNDLE,Room 301; Room 402,,40
+Thursday,14:00,16:00,DSN5004,DSN5004 IoT Lab (DS1+DS2+DS3+DS4),DS,Practical,Session 1,Sanehi,DS1; DS2; DS3; DS4,SIMULTANEOUS_BUNDLE,Room 305; Computer Lab CL13; Computer Lab CL14,,60
+Thursday,16:00,17:00,CSN5001,CSN5001 TOC (G1),CSE,Lecture,Session 3,Dr. Sandeep Harit,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Thursday,16:00,17:00,CSN5002,CSN5002 SC (G2),CSE,Lecture,Session 3,Dr. Dipika,G2,SINGLE_FROM_ELIGIBLE,Room 405,,69
+Friday,08:00,09:00,CSN5003,CSN5003 SE (G2),CSE,Lecture,Session 2,Dr. Tejinder,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L30,,69
+Friday,09:00,10:00,AIN5003,AIN5003 HMI,AI,Lecture,Session 3,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Friday,09:00,10:00,CSN5002,CSN5002 SC (G1),CSE,Lecture,Session 3,Dr. Dipika,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,69
+Friday,09:00,10:00,CSN5004,CSN5004 DBMS (G2),CSE,Lecture,Session 3,Dr. Shilpa,G2,SINGLE_FROM_ELIGIBLE,Lecture Hall L22,,69
+Friday,10:00,12:00,AIN5003,AIN5003 HMI Lab (AI1),AI,Practical,Session 1,Dr. Alka Jindal,AI1,SINGLE_FROM_ELIGIBLE,Computer Lab CL5,,15
+Friday,10:00,12:00,AIN5004,AIN5004 CN Lab (AI2),AI,Practical,Session 1,"Dr. Divya Bansal, Pooja",AI2,SINGLE_FROM_ELIGIBLE,Room 304,,15
+Friday,10:00,12:00,CSN5002,CSN5002 SC Lab (CSE7),CSE,Practical,Session 1,Dr. Dipika,CSE7,SINGLE_FROM_ELIGIBLE,Room 301,,18
+Friday,10:00,12:00,CSN5003,"CSN5003 SE Lab (CSE1,CSE2)",CSE,Practical,Session 1,"Dr. Tejinder, Shivani",CSE1; CSE2,SIMULTANEOUS_BUNDLE,Room 303; Computer Lab CL13,,40
+Friday,10:00,12:00,CSN5004,"CSN5004 DBMS Lab (CSE3,CSE4)",CSE,Practical,Session 1,Dr. Shilpa,CSE3; CSE4,SIMULTANEOUS_BUNDLE,Room 402; Lecture Hall L407,,40
+Friday,10:00,11:00,DSN5002,DSN5002 ATDS,DS,Lecture,Session 3,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L405,,60
+Friday,11:00,12:00,DSN5004,DSN5004 IoT,DS,Lecture,Session 3,Ms. Ishita,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,60
+Friday,12:00,13:00,AIN5004,AIN5004 CN,AI,Lecture,Session 3,"Dr. Divya Bansal, Pooja",AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Friday,12:00,13:00,CSN5004,CSN5004 DBMS (G1),CSE,Lecture,Session 3,Dr. Shilpa,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,69
+Friday,14:00,15:00,CSN5003,CSN5003 SE (G1),CSE,Lecture,Session 3,Dr. Tejinder,G1,SINGLE_FROM_ELIGIBLE,Lecture Hall L21,,69
+Friday,15:00,17:00,AIM1003,MSC Lab (AIM1003 HMI),AI,Practical,Session 1,Dr. Alka Jindal,AI1; AI2,SINGLE_FROM_ELIGIBLE,Lecture Hall L406,,30
+Friday,15:00,17:00,CSM1003,MSC Lab (CSM1003 DBMS),CSE,Practical,Session 1,Dr. Pravneet Kaur,CSE1; CSE2; CSE3; CSE4; CSE5; CSE6; CSE7,SINGLE_FROM_ELIGIBLE,Lecture Hall L22,,138
+Friday,15:00,17:00,DSM1003,MSC Lab (DSM1003 ATDS),DS,Practical,Session 1,Dr. Manish Kumar,DS1; DS2; DS3; DS4,SINGLE_FROM_ELIGIBLE,Lecture Hall L407,,60

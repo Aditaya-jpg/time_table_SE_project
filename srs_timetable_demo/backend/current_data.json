@@ -5,117 +5,156 @@
       "name": "CSE1",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 1,
+      "sid_end": 20,
+      "strength": 20,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 1–20)"
     },
     {
       "id": "SEC_CSE2",
       "name": "CSE2",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 21,
+      "sid_end": 40,
+      "strength": 20,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 21–40)"
     },
     {
       "id": "SEC_CSE3",
       "name": "CSE3",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 41,
+      "sid_end": 60,
+      "strength": 20,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 41–60)"
     },
     {
       "id": "SEC_CSE4",
       "name": "CSE4",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 61,
+      "sid_end": 80,
+      "strength": 20,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 61–80: 9 in G1, 11 in G2)"
     },
     {
       "id": "SEC_CSE5",
       "name": "CSE5",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 81,
+      "sid_end": 100,
+      "strength": 20,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 81–100)"
     },
     {
       "id": "SEC_CSE6",
       "name": "CSE6",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 101,
+      "sid_end": 120,
+      "strength": 20,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 101–120)"
     },
     {
       "id": "SEC_CSE7",
       "name": "CSE7",
       "department": "CSE",
       "semester_year": "5th Semester",
-      "strength": 60,
+      "division_type": "Practical Batch",
+      "sid_start": 121,
+      "sid_end": 138,
+      "strength": 18,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 121–138)"
     },
     {
       "id": "SEC_DS1",
       "name": "DS1",
       "department": "DS",
       "semester_year": "5th Semester",
-      "strength": 50,
+      "division_type": "Practical Batch",
+      "sid_start": 1,
+      "sid_end": 15,
+      "strength": 15,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 1–15)"
     },
     {
       "id": "SEC_DS2",
       "name": "DS2",
       "department": "DS",
       "semester_year": "5th Semester",
-      "strength": 50,
+      "division_type": "Practical Batch",
+      "sid_start": 16,
+      "sid_end": 30,
+      "strength": 15,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 16–30)"
     },
     {
       "id": "SEC_DS3",
       "name": "DS3",
       "department": "DS",
       "semester_year": "5th Semester",
-      "strength": 50,
+      "division_type": "Practical Batch",
+      "sid_start": 31,
+      "sid_end": 45,
+      "strength": 15,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 31–45)"
     },
     {
       "id": "SEC_DS4",
       "name": "DS4",
       "department": "DS",
       "semester_year": "5th Semester",
-      "strength": 50,
+      "division_type": "Practical Batch",
+      "sid_start": 46,
+      "sid_end": 60,
+      "strength": 15,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 46–60)"
     },
     {
       "id": "SEC_AI1",
       "name": "AI1",
       "department": "AI",
       "semester_year": "5th Semester",
-      "strength": 45,
+      "division_type": "Practical Batch",
+      "sid_start": 1,
+      "sid_end": 15,
+      "strength": 15,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 1–15)"
     },
     {
       "id": "SEC_AI2",
       "name": "AI2",
       "department": "AI",
       "semester_year": "5th Semester",
-      "strength": 45,
+      "division_type": "Practical Batch",
+      "sid_start": 16,
+      "sid_end": 30,
+      "strength": 15,
       "is_group": false,
-      "notes": "Actual student section"
+      "notes": "Practical batch (SID 16–30)"
     }
   ],
   "course_groups": [
@@ -123,26 +162,25 @@
       "id": "GRP_G1",
       "name": "G1",
       "department": "CSE",
-      "section_ids": [
-        "SEC_CSE1",
-        "SEC_CSE2",
-        "SEC_CSE3",
-        "SEC_CSE4"
-      ],
+      "division_type": "Lecture Division",
+      "sid_start": 1,
+      "sid_end": 69,
+      "strength": 69,
+      "section_ids": [],
       "is_verified": true,
-      "notes": "Curriculum course group for CSE lectures. Group membership unverified pending administrator mapping."
+      "notes": "Lecture division G1 (SID 1–69, 69 students)"
     },
     {
       "id": "GRP_G2",
       "name": "G2",
       "department": "CSE",
-      "section_ids": [
-        "SEC_CSE5",
-        "SEC_CSE6",
-        "SEC_CSE7"
-      ],
+      "division_type": "Lecture Division",
+      "sid_start": 70,
+      "sid_end": 138,
+      "strength": 69,
+      "section_ids": [],
       "is_verified": true,
-      "notes": "Curriculum course group for CSE lectures. Group membership unverified pending administrator mapping."
+      "notes": "Lecture division G2 (SID 70–138, 69 students)"
     }
   ],
   "faculty": [
@@ -4652,52 +4690,9 @@
   },
   "last_solution": {
     "status": "OPTIMAL",
-    "solve_time_seconds": 1.687,
+    "solve_time_seconds": 1.471,
     "total_events": 91,
     "scheduled_events": [
-      {
-        "event_id": "CRS_CSE_CSN5001_TUT_4_S1",
-        "course_id": "CRS_CSE_CSN5001_TUT_4",
-        "course_code": "CSN5001",
-        "course_name": "CSN5001 TOC Tut (CSE7)",
-        "department": "CSE",
-        "session_type": "Tutorial",
-        "session_index": 1,
-        "faculty_ids": [
-          "FAC_SANDEEP_HARIT",
-          "FAC_RAVPREET"
-        ],
-        "faculty_names": [
-          "Dr. Sandeep Harit",
-          "Dr. Ravpreet"
-        ],
-        "faculty_id": "FAC_SANDEEP_HARIT, FAC_RAVPREET",
-        "faculty_name": "Dr. Sandeep Harit, Dr. Ravpreet",
-        "section_ids": [
-          "SEC_CSE7"
-        ],
-        "section_names": [
-          "CSE7"
-        ],
-        "group_id": null,
-        "group_name": null,
-        "day_index": 0,
-        "day_name": "Monday",
-        "start_period": 0,
-        "end_period": 1,
-        "duration": 1,
-        "allocation_mode": "SINGLE_FROM_ELIGIBLE",
-        "room_ids": [
-          "304"
-        ],
-        "room_names": [
-          "Room 304"
-        ],
-        "total_room_capacity": null,
-        "total_student_strength": 60,
-        "needs_review": false,
-        "review_reason": null
-      },
       {
         "event_id": "CRS_CSE_CSN5003_G1_S1",
         "course_id": "CRS_CSE_CSN5003_G1",
@@ -4715,16 +4710,10 @@
         "faculty_id": "FAC_TEJINDER",
         "faculty_name": "Dr. Tejinder",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -4741,7 +4730,7 @@
           "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -4762,16 +4751,10 @@
         "faculty_id": "FAC_SANDEEP_HARIT",
         "faculty_name": "Dr. Sandeep Harit",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -4788,7 +4771,7 @@
           "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -4809,14 +4792,10 @@
         "faculty_id": "FAC_TEJINDER",
         "faculty_name": "Dr. Tejinder",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -4827,13 +4806,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L22"
+          "L30"
         ],
         "room_names": [
-          "Lecture Hall L22"
+          "Lecture Hall L30"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -4878,7 +4857,7 @@
           "Computer Lab CL14"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 100,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -4919,7 +4898,7 @@
           "Room 402"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 50,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -4960,7 +4939,7 @@
           "Computer Lab CL5"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 45,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -5003,7 +4982,7 @@
           "Computer Lab CL13"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 45,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -5050,7 +5029,7 @@
           "Room 306"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -5097,7 +5076,7 @@
           "Room 306"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -5144,7 +5123,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -5181,13 +5160,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L406"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L406"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -5208,14 +5187,10 @@
         "faculty_id": "FAC_SANDEEP_HARIT",
         "faculty_name": "Dr. Sandeep Harit",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -5226,13 +5201,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L407"
+          "L21"
         ],
         "room_names": [
-          "Lecture Hall L407"
+          "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -5269,13 +5244,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L19"
+          "L406"
         ],
         "room_names": [
-          "Lecture Hall L19"
+          "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -5296,16 +5271,10 @@
         "faculty_id": "FAC_DIPIKA",
         "faculty_name": "Dr. Dipika",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -5322,7 +5291,7 @@
           "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -5343,14 +5312,10 @@
         "faculty_id": "FAC_SHILPA",
         "faculty_name": "Dr. Shilpa",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -5361,13 +5326,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L406"
+          "L22"
         ],
         "room_names": [
-          "Lecture Hall L406"
+          "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -5414,7 +5379,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -5457,7 +5422,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -5504,13 +5469,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L19"
+          "L22"
         ],
         "room_names": [
-          "Lecture Hall L19"
+          "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 420,
+        "total_student_strength": 138,
         "needs_review": false,
         "review_reason": null
       },
@@ -5557,7 +5522,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -5600,7 +5565,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -5643,7 +5608,7 @@
           "Room 305"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -5690,7 +5655,7 @@
           "Lecture Hall L405"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -5735,7 +5700,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": "Friday lecture designated in Room 305."
       },
@@ -5776,13 +5741,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L405"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L405"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -5823,7 +5788,7 @@
           "Computer Lab CL13"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 45,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -5864,7 +5829,7 @@
           "Computer Lab CL14"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 45,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -5885,14 +5850,10 @@
         "faculty_id": "FAC_SANDEEP_HARIT",
         "faculty_name": "Dr. Sandeep Harit",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -5903,13 +5864,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L21"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L21"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -5930,16 +5891,10 @@
         "faculty_id": "FAC_SHILPA",
         "faculty_name": "Dr. Shilpa",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -5950,13 +5905,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "407"
+          "L22"
         ],
         "room_names": [
-          "Room 407"
+          "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -5997,7 +5952,7 @@
           "Room 402"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 50,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -6038,7 +5993,7 @@
           "Room 301"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 50,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -6059,16 +6014,10 @@
         "faculty_id": "FAC_DIPIKA",
         "faculty_name": "Dr. Dipika",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -6085,7 +6034,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -6106,14 +6055,10 @@
         "faculty_id": "FAC_SHILPA",
         "faculty_name": "Dr. Shilpa",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -6130,7 +6075,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -6177,7 +6122,7 @@
           "Room 306"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -6198,14 +6143,10 @@
         "faculty_id": "FAC_TEJINDER",
         "faculty_name": "Dr. Tejinder",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -6216,13 +6157,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L22"
+          "L21"
         ],
         "room_names": [
-          "Lecture Hall L22"
+          "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -6269,7 +6210,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -6312,7 +6253,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -6365,7 +6306,7 @@
           "Lecture Hall L19"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 420,
+        "total_student_strength": 138,
         "needs_review": false,
         "review_reason": null
       },
@@ -6412,7 +6353,50 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
+        "needs_review": false,
+        "review_reason": null
+      },
+      {
+        "event_id": "CRS_CSE_CSN5001_TUT_4_S1",
+        "course_id": "CRS_CSE_CSN5001_TUT_4",
+        "course_code": "CSN5001",
+        "course_name": "CSN5001 TOC Tut (CSE7)",
+        "department": "CSE",
+        "session_type": "Tutorial",
+        "session_index": 1,
+        "faculty_ids": [
+          "FAC_SANDEEP_HARIT",
+          "FAC_RAVPREET"
+        ],
+        "faculty_names": [
+          "Dr. Sandeep Harit",
+          "Dr. Ravpreet"
+        ],
+        "faculty_id": "FAC_SANDEEP_HARIT, FAC_RAVPREET",
+        "faculty_name": "Dr. Sandeep Harit, Dr. Ravpreet",
+        "section_ids": [
+          "SEC_CSE7"
+        ],
+        "section_names": [
+          "CSE7"
+        ],
+        "group_id": null,
+        "group_name": null,
+        "day_index": 2,
+        "day_name": "Wednesday",
+        "start_period": 0,
+        "end_period": 1,
+        "duration": 1,
+        "allocation_mode": "SINGLE_FROM_ELIGIBLE",
+        "room_ids": [
+          "304"
+        ],
+        "room_names": [
+          "Room 304"
+        ],
+        "total_room_capacity": null,
+        "total_student_strength": 18,
         "needs_review": false,
         "review_reason": null
       },
@@ -6457,7 +6441,7 @@
           "Room 402"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -6494,13 +6478,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L21"
+          "L406"
         ],
         "room_names": [
-          "Lecture Hall L21"
+          "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -6543,7 +6527,7 @@
           "Room 305"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -6590,7 +6574,7 @@
           "Computer Lab CL13"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -6631,7 +6615,7 @@
           "Computer Lab CL14"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 60,
+        "total_student_strength": 18,
         "needs_review": false,
         "review_reason": null
       },
@@ -6678,7 +6662,7 @@
           "Lecture Hall L405"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -6721,7 +6705,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -6768,7 +6752,7 @@
           "Data Science Lab"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 80,
         "needs_review": false,
         "review_reason": null
       },
@@ -6811,7 +6795,7 @@
           "Room 305"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 100,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -6856,7 +6840,7 @@
           "Room 306"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 100,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -6901,7 +6885,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": "Friday lecture designated in Room 305."
       },
@@ -6922,16 +6906,10 @@
         "faculty_id": "FAC_SANDEEP_HARIT",
         "faculty_name": "Dr. Sandeep Harit",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -6948,7 +6926,7 @@
           "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -6969,14 +6947,10 @@
         "faculty_id": "FAC_DIPIKA",
         "faculty_name": "Dr. Dipika",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -6987,13 +6961,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L406"
+          "L22"
         ],
         "room_names": [
-          "Lecture Hall L406"
+          "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -7034,7 +7008,7 @@
           "Room 402"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 50,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -7079,7 +7053,7 @@
           "Room 306"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 100,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -7100,14 +7074,10 @@
         "faculty_id": "FAC_SANDEEP_HARIT",
         "faculty_name": "Dr. Sandeep Harit",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -7118,13 +7088,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L407"
+          "L21"
         ],
         "room_names": [
-          "Lecture Hall L407"
+          "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -7167,7 +7137,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -7220,7 +7190,7 @@
           "Lecture Hall L19"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 420,
+        "total_student_strength": 138,
         "needs_review": false,
         "review_reason": null
       },
@@ -7267,7 +7237,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -7310,7 +7280,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": "Backlog lecture scheduled in L407."
       },
@@ -7347,13 +7317,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L21"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L21"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -7398,7 +7368,7 @@
           "Room 301"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -7445,7 +7415,7 @@
           "Lecture Hall L405"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -7492,7 +7462,7 @@
           "Lecture Hall L405"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -7535,7 +7505,7 @@
           "Room 402"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -7556,14 +7526,10 @@
         "faculty_id": "FAC_DIPIKA",
         "faculty_name": "Dr. Dipika",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -7580,7 +7546,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -7601,16 +7567,10 @@
         "faculty_id": "FAC_TEJINDER",
         "faculty_name": "Dr. Tejinder",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -7621,13 +7581,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L21"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L21"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -7664,13 +7624,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "305"
+          "L406"
         ],
         "room_names": [
-          "Room 305"
+          "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -7691,14 +7651,10 @@
         "faculty_id": "FAC_TEJINDER",
         "faculty_name": "Dr. Tejinder",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -7709,13 +7665,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L22"
+          "L30"
         ],
         "room_names": [
-          "Lecture Hall L22"
+          "Lecture Hall L30"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -7736,16 +7692,10 @@
         "faculty_id": "FAC_SHILPA",
         "faculty_name": "Dr. Shilpa",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -7756,13 +7706,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "407"
+          "L22"
         ],
         "room_names": [
-          "Room 407"
+          "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -7809,7 +7759,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -7852,7 +7802,7 @@
           "Room 306"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 60,
+        "total_student_strength": 18,
         "needs_review": false,
         "review_reason": null
       },
@@ -7897,7 +7847,7 @@
           "Room 402"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -7948,7 +7898,7 @@
           "Computer Lab CL14"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -7969,16 +7919,10 @@
         "faculty_id": "FAC_SANDEEP_HARIT",
         "faculty_name": "Dr. Sandeep Harit",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -7995,7 +7939,7 @@
           "Lecture Hall L21"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -8016,14 +7960,10 @@
         "faculty_id": "FAC_DIPIKA",
         "faculty_name": "Dr. Dipika",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -8034,13 +7974,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L406"
+          "405"
         ],
         "room_names": [
-          "Lecture Hall L406"
+          "Room 405"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -8077,13 +8017,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L407"
+          "L406"
         ],
         "room_names": [
-          "Lecture Hall L407"
+          "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -8104,16 +8044,10 @@
         "faculty_id": "FAC_DIPIKA",
         "faculty_name": "Dr. Dipika",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -8124,13 +8058,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L21"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L21"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -8151,14 +8085,10 @@
         "faculty_id": "FAC_SHILPA",
         "faculty_name": "Dr. Shilpa",
         "section_ids": [
-          "SEC_CSE5",
-          "SEC_CSE6",
-          "SEC_CSE7"
+          "GRP_G2"
         ],
         "section_names": [
-          "CSE5",
-          "CSE6",
-          "CSE7"
+          "Group G2"
         ],
         "group_id": "GRP_G2",
         "group_name": "G2",
@@ -8175,7 +8105,7 @@
           "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 180,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -8216,7 +8146,7 @@
           "Computer Lab CL5"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 45,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -8259,7 +8189,7 @@
           "Room 304"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 45,
+        "total_student_strength": 15,
         "needs_review": false,
         "review_reason": null
       },
@@ -8300,7 +8230,7 @@
           "Room 301"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 60,
+        "total_student_strength": 18,
         "needs_review": false,
         "review_reason": null
       },
@@ -8347,7 +8277,7 @@
           "Computer Lab CL13"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -8392,7 +8322,7 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 120,
+        "total_student_strength": 40,
         "needs_review": false,
         "review_reason": null
       },
@@ -8439,7 +8369,7 @@
           "Lecture Hall L405"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -8486,7 +8416,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       },
@@ -8531,7 +8461,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": "Friday lecture designated in Room 305."
       },
@@ -8552,16 +8482,10 @@
         "faculty_id": "FAC_SHILPA",
         "faculty_name": "Dr. Shilpa",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -8572,13 +8496,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "407"
+          "L22"
         ],
         "room_names": [
-          "Room 407"
+          "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -8599,16 +8523,10 @@
         "faculty_id": "FAC_TEJINDER",
         "faculty_name": "Dr. Tejinder",
         "section_ids": [
-          "SEC_CSE1",
-          "SEC_CSE2",
-          "SEC_CSE3",
-          "SEC_CSE4"
+          "GRP_G1"
         ],
         "section_names": [
-          "CSE1",
-          "CSE2",
-          "CSE3",
-          "CSE4"
+          "Group G1"
         ],
         "group_id": "GRP_G1",
         "group_name": "G1",
@@ -8619,13 +8537,13 @@
         "duration": 1,
         "allocation_mode": "SINGLE_FROM_ELIGIBLE",
         "room_ids": [
-          "L21"
+          "L407"
         ],
         "room_names": [
-          "Lecture Hall L21"
+          "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 240,
+        "total_student_strength": 69,
         "needs_review": false,
         "review_reason": null
       },
@@ -8668,7 +8586,7 @@
           "Lecture Hall L406"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 90,
+        "total_student_strength": 30,
         "needs_review": false,
         "review_reason": null
       },
@@ -8721,7 +8639,7 @@
           "Lecture Hall L22"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 420,
+        "total_student_strength": 138,
         "needs_review": false,
         "review_reason": null
       },
@@ -8768,13 +8686,13 @@
           "Lecture Hall L407"
         ],
         "total_room_capacity": null,
-        "total_student_strength": 200,
+        "total_student_strength": 60,
         "needs_review": false,
         "review_reason": null
       }
     ],
     "diagnostics": [
-      "Successfully found OPTIMAL timetable schedule in 1.687s."
+      "Successfully found OPTIMAL timetable schedule in 1.471s."
     ],
     "validation": {
       "overall_status": "VALIDATED WITH WARNINGS",
@@ -8788,66 +8706,69 @@
       "duration_violations": 0,
       "multi_room_violations": 0,
       "faculty_status": "Passed",
-      "section_status": "Passed (G1/G2 Mapped)",
+      "section_status": "Passed (SID-verified)",
       "room_status": "Passed",
       "capacity_status": "Unverified — capacities not defined in source",
       "duration_status": "Passed",
       "unverified_constraints": [
-        "Room Capacities: Unverified — venue(s) 304 for CSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L21 for CSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L21 for CSN5001 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L22 for CSN5003 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L30 for CSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301, CL14 for DSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 402 for DSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL5 for AIN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL13 for AIN5004 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 304, 306 for CSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L406 for DSN5004 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L406 for AIN5001 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L407 for CSN5001 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L19 for AIN5002 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L407 for AIN5001 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L406 for AIN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L21 for CSN5002 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L406 for CSN5004 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L22 for CSN5004 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L407 for DSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L406 for AIM1003 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L19 for CSM1003 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L22 for CSM1003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L407 for DSM1003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L407 for AIN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 305 for CSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L405 for DSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L406 for AIN5004 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L405 for DSN5003 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L407 for DSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL13 for AIN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL14 for AIN5003 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) 407 for CSN5004 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L407 for CSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 402 for DSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301 for DSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) L407 for CSN5002 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L406 for CSN5004 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301, 306 for CSN5001 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L19 for CSM1003 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) 304 for CSN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 306, 402 for CSN5004 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L21 for AIN5001 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L406 for AIN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 305 for AIN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL5, CL13 for CSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL14 for CSN5004 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) DS lab for CSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 305 for DSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301, 306 for DSN5003 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L406 for CSN5002 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L22 for CSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 303, 306 for DSN5003 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L407 for AIN5001 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301 for CSN5003 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L405 for DSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 402 for AIN5001 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L406 for CSN5002 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L407 for CSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 306 for CSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301, 402 for CSN5004 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 305, CL13, CL14 for DSN5004 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L22 for CSN5004 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) 405 for CSN5002 have unknown seating capacities in source data.",
+        "Room Capacities: Unverified — venue(s) L406 for AIN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) CL5 for AIN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 304 for AIN5004 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 301 for CSN5002 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 303, CL13 for CSN5003 have unknown seating capacities in source data.",
         "Room Capacities: Unverified — venue(s) 402, L407 for CSN5004 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L405 for DSN5002 have unknown seating capacities in source data.",
-        "Room Capacities: Unverified — venue(s) L22 for CSM1003 have unknown seating capacities in source data."
+        "Room Capacities: Unverified — venue(s) L405 for DSN5002 have unknown seating capacities in source data."
       ],
       "details": []
     }
@@ -8870,7 +8791,9 @@
       "DSN_INCOMPLETE — Unspecified Course (1 session)"
     ],
     "unverified_notes": [
-      "G1 and G2 course groups have unverified section memberships pending administrator mapping",
+      "CSE: 138 distinct students (G1: SID 1–69, G2: SID 70–138; Practical batches CSE1–CSE7)",
+      "AI: 30 distinct students (AI Shared: SID 1–30; Practical batches AI1–AI2)",
+      "DS: 60 distinct students (DS Shared: SID 1–60; Practical batches DS1–DS4)",
       "Room capacities not specified in institutional source timetable (all marked unverified)",
       "Shivani faculty identity has title/spelling variants in source (Dr. / Ms. / Shivani)"
     ]

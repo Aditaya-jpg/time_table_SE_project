@@ -253,7 +253,7 @@ const TimetableVisualizer = {
               : (ev.faculty_name || 'Faculty TBA');
 
             const cohortDisplay = ev.group_name
-              ? `Group ${ev.group_name} [Cohort Group]`
+              ? `Group ${ev.group_name} (${ev.total_student_strength} students)`
               : `${ev.section_names.join(', ')} (${ev.total_student_strength} students)`;
 
             const reviewPill = ev.needs_review

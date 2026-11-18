@@ -127,8 +127,8 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
             </div>
             <div class="kpi-info">
-              <span class="kpi-value" id="kpiSections">0</span>
-              <span class="kpi-label">Student Sections</span>
+              <span class="kpi-value" id="kpiSections">228</span>
+              <span class="kpi-label">Campus Students</span>
             </div>
           </div>
           <div class="kpi-card">
@@ -306,65 +306,230 @@
         </div>
       </section>
 
-      <!-- SECTION: Student Sections -->
+      <!-- SECTION: Student Sections & Divisions -->
       <section id="sec-sections" class="content-section">
         <div class="section-toolbar">
           <div>
-            <h3>Student Sections</h3>
-            <p class="text-muted">Manage academic student cohorts and class strengths.</p>
+            <h3>Student Divisions &amp; SID-Based Identity Model</h3>
+            <p class="text-muted">Authoritative student cohorts, lecture divisions, and practical batches with exact Student ID (SID) ranges and set-union strength calculation.</p>
           </div>
-          <button class="btn btn-primary btn-sm" id="btnAddSection">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Add Section</span>
-          </button>
-        </div>
-        <div class="card table-card">
-          <table class="data-table" id="sectionsTable">
-            <thead>
-              <tr>
-                <th>Section ID</th>
-                <th>Section Name</th>
-                <th>Department</th>
-                <th>Semester / Year</th>
-                <th>Student Strength</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div style="display: flex; gap: 8px;">
+            <span class="badge badge-purple" style="padding: 6px 12px; font-size: 13px;">Campus Total: 228 Distinct Students</span>
+          </div>
         </div>
 
-        <!-- Course Groups (G1 / G2) Section Mapping Card -->
-        <div class="card p-24" style="margin-top: 24px;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+        <!-- Campus Student Strength Breakdown Banner -->
+        <div class="metric-row" style="margin-bottom: 24px;">
+          <div class="metric-item">
+            <span class="metric-label">B.Tech CSE Core</span>
+            <span class="metric-val" style="color: #60a5fa;">138 Students</span>
+            <span class="text-xs text-muted">SIDs CSE:1 – 138 (G1, G2, CSE1–7)</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">B.Tech CSE (AI)</span>
+            <span class="metric-val" style="color: #a855f7;">30 Students</span>
+            <span class="text-xs text-muted">SIDs AI:1 – 30 (AI Shared, AI1–2)</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">B.Tech CSE (Data Science)</span>
+            <span class="metric-val" style="color: #34d399;">60 Students</span>
+            <span class="text-xs text-muted">SIDs DS:1 – 60 (DS Shared, DS1–4)</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Namespacing Architecture</span>
+            <span class="metric-val" style="color: #fbbf24;">Isolated SIDs</span>
+            <span class="text-xs text-muted">Zero cross-programme student clash</span>
+          </div>
+        </div>
+
+        <!-- CSE Divisions Card -->
+        <div class="card p-24" style="margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
             <div>
-              <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Course Cohort Groups (G1 &amp; G2) Section Mapping</h4>
-              <p class="text-muted text-sm">
-                In CSE, large lectures are taught to cohort groups <strong>G1</strong> and <strong>G2</strong> while tutorials and practicals are taken by individual student sections (CSE1–CSE7).
-                Map which CSE sections belong to each group below to enforce strict intra-group student conflict checks.
-              </p>
+              <h4 style="font-size: 16px; font-weight: 700; color: #60a5fa;">Computer Science &amp; Engineering • 138 Students</h4>
+              <p class="text-muted text-sm">Large lectures are attended by Lecture Divisions G1 (SIDs 1–69) and G2 (SIDs 70–138). Practical and tutorial batches CSE1–CSE7 overlap on these exact SID ranges.</p>
             </div>
-            <span class="badge badge-warning" id="groupStatusBadge">Mapping Pending / Unverified</span>
+            <span class="badge badge-subtle">SID 1–138</span>
           </div>
-
           <div class="card table-card" style="margin-bottom: 8px;">
-            <table class="data-table" id="groupsTable">
+            <table class="data-table" id="cseDivisionsTable">
               <thead>
                 <tr>
-                  <th>Group ID</th>
-                  <th>Group Name</th>
-                  <th>Department</th>
-                  <th>Mapped CSE Student Sections</th>
-                  <th>Verification Status</th>
-                  <th>Actions</th>
+                  <th>Division / Batch</th>
+                  <th>Division Type</th>
+                  <th>Student ID Range</th>
+                  <th>Distinct Strength</th>
+                  <th>Overlapping SIDs &amp; Membership Structure</th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>
+                <tr>
+                  <td><strong>Group G1</strong></td>
+                  <td><span class="badge badge-info">Lecture Division</span></td>
+                  <td><code>CSE:SID:1 – 69</code></td>
+                  <td><span class="badge badge-subtle">69 Students</span></td>
+                  <td>Encompasses CSE1 (1–20), CSE2 (21–40), CSE3 (41–60), and 9 students of CSE4 (61–69)</td>
+                </tr>
+                <tr>
+                  <td><strong>Group G2</strong></td>
+                  <td><span class="badge badge-info">Lecture Division</span></td>
+                  <td><code>CSE:SID:70 – 138</code></td>
+                  <td><span class="badge badge-subtle">69 Students</span></td>
+                  <td>Encompasses 11 students of CSE4 (70–80), CSE5 (81–100), CSE6 (101–120), and CSE7 (121–138)</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE1</strong></td>
+                  <td><span class="badge badge-purple">Practical Batch</span></td>
+                  <td><code>CSE:SID:1 – 20</code></td>
+                  <td><span class="badge badge-subtle">20 Students</span></td>
+                  <td>Full subset of Group G1</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE2</strong></td>
+                  <td><span class="badge badge-purple">Practical Batch</span></td>
+                  <td><code>CSE:SID:21 – 40</code></td>
+                  <td><span class="badge badge-subtle">20 Students</span></td>
+                  <td>Full subset of Group G1</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE3</strong></td>
+                  <td><span class="badge badge-purple">Practical Batch</span></td>
+                  <td><code>CSE:SID:41 – 60</code></td>
+                  <td><span class="badge badge-subtle">20 Students</span></td>
+                  <td>Full subset of Group G1</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE4</strong></td>
+                  <td><span class="badge badge-warning">Practical Batch (Split)</span></td>
+                  <td><code>CSE:SID:61 – 80</code></td>
+                  <td><span class="badge badge-subtle">20 Students</span></td>
+                  <td><strong style="color: #fbbf24;">Boundary Batch:</strong> SIDs 61–69 (9 st) belong to G1; SIDs 70–80 (11 st) belong to G2</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE5</strong></td>
+                  <td><span class="badge badge-purple">Practical Batch</span></td>
+                  <td><code>CSE:SID:81 – 100</code></td>
+                  <td><span class="badge badge-subtle">20 Students</span></td>
+                  <td>Full subset of Group G2</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE6</strong></td>
+                  <td><span class="badge badge-purple">Practical Batch</span></td>
+                  <td><code>CSE:SID:101 – 120</code></td>
+                  <td><span class="badge badge-subtle">20 Students</span></td>
+                  <td>Full subset of Group G2</td>
+                </tr>
+                <tr>
+                  <td><strong>CSE7</strong></td>
+                  <td><span class="badge badge-purple">Practical Batch</span></td>
+                  <td><code>CSE:SID:121 – 138</code></td>
+                  <td><span class="badge badge-subtle">18 Students</span></td>
+                  <td>Full subset of Group G2 (Final 18 students)</td>
+                </tr>
+              </tbody>
             </table>
           </div>
-          <p class="text-muted text-xs" style="margin-top: 8px; color: #94a3b8;">
-            * Note: If G1/G2 mappings are unassigned, the solver generates provisional schedules with non-overlapping group lectures, but marks student section conflict validation as "Unverified" until administrator mapping is confirmed.
-          </p>
+        </div>
+
+        <!-- AI & DS Divisions in 2-Column Grid -->
+        <div class="grid-2-col" style="gap: 20px;">
+          <!-- AI Divisions Card -->
+          <div class="card p-24">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div>
+                <h4 style="font-size: 16px; font-weight: 700; color: #a855f7;">CSE (Artificial Intelligence) • 30 Students</h4>
+                <p class="text-muted text-sm">Full AI cohort attends combined lectures (AIN &amp; AIM1003); practicals split into AI1 and AI2.</p>
+              </div>
+              <span class="badge badge-subtle">SID 1–30</span>
+            </div>
+            <div class="card table-card">
+              <table class="data-table" id="aiDivisionsTable">
+                <thead>
+                  <tr>
+                    <th>Division / Batch</th>
+                    <th>Type</th>
+                    <th>SID Range</th>
+                    <th>Strength</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>AI Shared</strong></td>
+                    <td><span class="badge badge-info">Lecture Cohort</span></td>
+                    <td><code>AI:SID:1 – 30</code></td>
+                    <td><span class="badge badge-subtle">30 Students</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>AI1</strong></td>
+                    <td><span class="badge badge-purple">Practical Batch</span></td>
+                    <td><code>AI:SID:1 – 15</code></td>
+                    <td><span class="badge badge-subtle">15 Students</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>AI2</strong></td>
+                    <td><span class="badge badge-purple">Practical Batch</span></td>
+                    <td><code>AI:SID:16 – 30</code></td>
+                    <td><span class="badge badge-subtle">15 Students</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Data Science Divisions Card -->
+          <div class="card p-24">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div>
+                <h4 style="font-size: 16px; font-weight: 700; color: #34d399;">CSE (Data Science) • 60 Students</h4>
+                <p class="text-muted text-sm">Full DS cohort attends combined lectures (DSN &amp; DSM1003); practicals split into DS1–DS4.</p>
+              </div>
+              <span class="badge badge-subtle">SID 1–60</span>
+            </div>
+            <div class="card table-card">
+              <table class="data-table" id="dsDivisionsTable">
+                <thead>
+                  <tr>
+                    <th>Division / Batch</th>
+                    <th>Type</th>
+                    <th>SID Range</th>
+                    <th>Strength</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>DS Shared</strong></td>
+                    <td><span class="badge badge-info">Lecture Cohort</span></td>
+                    <td><code>DS:SID:1 – 60</code></td>
+                    <td><span class="badge badge-subtle">60 Students</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DS1</strong></td>
+                    <td><span class="badge badge-purple">Practical Batch</span></td>
+                    <td><code>DS:SID:1 – 15</code></td>
+                    <td><span class="badge badge-subtle">15 Students</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DS2</strong></td>
+                    <td><span class="badge badge-purple">Practical Batch</span></td>
+                    <td><code>DS:SID:16 – 30</code></td>
+                    <td><span class="badge badge-subtle">15 Students</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DS3</strong></td>
+                    <td><span class="badge badge-purple">Practical Batch</span></td>
+                    <td><code>DS:SID:31 – 45</code></td>
+                    <td><span class="badge badge-subtle">15 Students</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DS4</strong></td>
+                    <td><span class="badge badge-purple">Practical Batch</span></td>
+                    <td><code>DS:SID:46 – 60</code></td>
+                    <td><span class="badge badge-subtle">15 Students</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -780,34 +945,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-close="facultyModal">Cancel</button>
           <button type="submit" class="btn btn-primary">Save Faculty</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- MODAL: Configure Group Mapping -->
-  <div id="groupMappingModal" class="modal-overlay hidden">
-    <div class="modal-card modal-md">
-      <div class="modal-header">
-        <h3 id="groupMappingTitle">Configure Group Section Mapping</h3>
-        <button class="modal-close" data-close="groupMappingModal">&times;</button>
-      </div>
-      <form id="groupMappingForm">
-        <input type="hidden" id="mappingGroupId" />
-        <div style="margin-bottom: 12px;">
-          <p class="text-muted text-sm" id="mappingGroupDesc" style="margin-bottom: 12px; line-height: 1.5;">
-            Select which student sections belong to this cohort group. When sections are mapped, the solver will prevent group lectures from overlapping with any practicals or tutorials of these member sections.
-          </p>
-        </div>
-        <div class="form-group">
-          <label style="font-weight: 600; margin-bottom: 8px; display: block;">Select CSE Student Sections:</label>
-          <div id="groupSectionsCheckboxGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md);">
-            <!-- Dynamic Checkboxes injected by JS -->
-          </div>
-        </div>
-        <div class="modal-footer" style="margin-top: 20px;">
-          <button type="button" class="btn btn-secondary" data-close="groupMappingModal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Group Mapping</button>
         </div>
       </form>
     </div>

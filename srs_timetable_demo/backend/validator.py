@@ -15,6 +15,7 @@ from .models import (
     Faculty,
     Room,
     Section,
+    get_course_student_ids,
 )
 
 
@@ -33,6 +34,12 @@ def validate_timetable(data: TimetableData, scheduled: List[TimetableEntry]) -> 
     group_dict = {g.id: g for g in data.course_groups}
     course_dict = {c.id: c for c in data.courses}
     breaks = data.config.break_after_period
+
+    # Pre-calculate distinct student IDs for every scheduled event
+    event_sids: Dict[str, Set[str]] = {}
+    for ev in scheduled:
+        c = course_dict.get(ev.course_id)
+        event_sids[ev.event_id] = get_course_student_ids(c) if c else set()
 
     # Helper: Check time overlap between two events
     def events_overlap(e1: TimetableEntry, e2: TimetableEntry) -> bool:
@@ -64,16 +71,13 @@ def validate_timetable(data: TimetableData, scheduled: List[TimetableEntry]) -> 
                     f"Faculty Conflict: Instructor(s) {', '.join(fac_names)} double-booked on {e1.day_name} between {e1.course_code} ({e1.start_period}-{e1.end_period}) and {e2.course_code} ({e2.start_period}-{e2.end_period})."
                 )
 
-            # B. Section Conflict: Shared student sections / groups
-            shared_sections = set(e1.section_ids).intersection(set(e2.section_ids))
-            if shared_sections:
-                shared_names = [
-                    section_dict[s].name if s in section_dict else (group_dict[s].name if s in group_dict else s)
-                    for s in shared_sections
-                ]
+            # B. Student Conflict: Shared student identities via SID intersection
+            shared_sids = event_sids.get(e1.event_id, set()).intersection(event_sids.get(e2.event_id, set()))
+            if shared_sids:
                 report.section_conflicts += 1
+                sample_sids = sorted(list(shared_sids))[:3]
                 details.append(
-                    f"Section Conflict: Cohort(s) {', '.join(shared_names)} double-booked on {e1.day_name} between {e1.course_code} and {e2.course_code}."
+                    f"Student Conflict: {len(shared_sids)} student(s) (e.g. {', '.join(sample_sids)}) double-booked on {e1.day_name} between {e1.course_code} ({e1.start_period}-{e1.end_period}) and {e2.course_code} ({e2.start_period}-{e2.end_period})."
                 )
 
             # C. Room / Laboratory Conflict: Shared venue in overlapping periods
@@ -85,15 +89,11 @@ def validate_timetable(data: TimetableData, scheduled: List[TimetableEntry]) -> 
                     f"Room Conflict: Venue(s) {', '.join(room_names)} double-booked on {e1.day_name} between {e1.course_code} and {e2.course_code}."
                 )
 
-    # 2. Check G1/G2 CourseGroup mapping verification
-    unmapped_groups = [g.name for g in data.course_groups if not g.is_verified or not g.section_ids]
-    if unmapped_groups:
-        unverified.append(
-            f"Student Section Conflicts: Unverified — Course group(s) {', '.join(unmapped_groups)} have pending section mapping."
-        )
-        report.section_status = "Unverified — G1/G2 mapping pending"
+    # 2. Student Section Status
+    if report.section_conflicts == 0:
+        report.section_status = "Passed (SID-verified)"
     else:
-        report.section_status = "Passed (G1/G2 Mapped)"
+        report.section_status = "Violated"
 
     # 3. Individual Event Constraint Checks
     for e in scheduled:

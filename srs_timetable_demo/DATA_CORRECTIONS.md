@@ -44,42 +44,62 @@ In academic scheduling, self-directed research projects and honours milestones a
 
 ---
 
-### 2.2 First-Class Modeling of `CourseGroup` (`G1` & `G2`)
+### 2.2 Dedicated Modeling of `CourseGroup` (`G1` & `G2`) via SID Ranges
 
-In the source timetable, B.Tech CSE Core conducts large lecture courses (`CSN5001 TOC`, `CSN5002 SC`, `CSN5003 SE`, `CSN5004 DBMS`) for two combined student cohorts labeled **`G1`** and **`G2`**, whereas tutorials and practicals are taken by individual student sections (`CSE1` to `CSE7`).
+In the source timetable, B.Tech CSE Core conducts large lecture courses (`CSN5001 TOC`, `CSN5002 SC`, `CSN5003 SE`, `CSN5004 DBMS`) for two lecture divisions labeled **`G1`** and **`G2`**, whereas tutorials and practicals are taken by individual student batches (`CSE1` to `CSE7`).
 
 **Previous Flaw:**
-`G1` and `G2` were previously listed as generic student sections with an arbitrary fabricated student strength of 120 students. This conflated physical student sections with course lecture groups.
+Earlier releases attempted to map `G1` and `G2` as coarse batches of whole sections (`G1 = CSE1..CSE4` and `G2 = CSE5..CSE7`) with arbitrary sum-based strengths. This was mathematically incorrect because `CSE4` is a split boundary batch spanning across both `G1` and `G2`.
 
-**Corrected Architecture:**
-1. **Dedicated Entity**: Created `CourseGroup` in `backend/models.py`:
-   ```python
-   class CourseGroup(BaseModel):
-       id: str                    # "GRP_G1", "GRP_G2"
-       name: str                  # "G1", "G2"
-       department: str            # "CSE"
-       section_ids: List[str]     # Dynamically mapped list of section IDs
-       is_verified: bool          # False until configured by administrator
-       notes: Optional[str] = None
-   ```
-2. **Student Sections Kept Discrete**: The 7 actual student cohorts (`CSE1` through `CSE7`) remain strictly separate sections with their verified 60-student capacity.
-3. **Admin Mapping Interface**:
-   - On the **Student Sections** page, a dedicated **Course Cohort Groups (G1 / G2) Section Mapping** card allows administrators to configure group membership using interactive checkboxes.
-   - REST API endpoints:
-     - `GET /api/groups`: Retrieves current group mappings.
-     - `PUT /api/groups/{group_id}/mapping`: Saves section mappings and flushes the data store.
-4. **Provisional vs. Fully Verified Solving**:
-   - **When Unmapped**: Solver treats `GRP_G1` and `GRP_G2` as abstract non-overlapping groups, allowing provisional schedule generation. The post-solve validator marks section conflict validation as `VALIDATED WITH WARNINGS` and explicitly warns: *"Student Section Conflicts: Unverified — Course group(s) G1, G2 have pending section mapping."*
-   - **When Mapped**: The solver strictly expands group assignments across all member sections ($\forall s \in \text{group}(g)$), preventing any G1/G2 lecture from overlapping with practicals or tutorials of its member sections. The validator upgrades section status to `Passed (G1/G2 Mapped)`.
-
-#### Resolution of Known CSE Tuesday 15:00 Conflict
-In `timetables.md`, Tuesday 15:00–16:00 specifies both `CSN5003 SE (G2)` (room L21) and `CSN5001 TOC Tut (CSE7)` (room 304).
-- If an administrator maps `CSE7` into `G2`, the CP-SAT solver detects the section double-booking constraint and mathematically shifts one of the sessions so that CSE7 students are never double-booked.
-- If `CSE7` is mapped into `G1`, both sessions can run concurrently in their distinct rooms without conflict.
+**Corrected Architecture (Authoritative SID Model):**
+1. **SID Range Definitions**:
+   - `G1`: SID 1–69 (Strength: 69 students)
+   - `G2`: SID 70–138 (Strength: 69 students)
+   - `CSE1`: SID 1–20 (20 students)
+   - `CSE2`: SID 21–40 (20 students)
+   - `CSE3`: SID 41–60 (20 students)
+   - `CSE4`: SID 61–80 (20 students — 9 students in G1 [SIDs 61–69], 11 students in G2 [SIDs 70–80])
+   - `CSE5`: SID 81–100 (20 students)
+   - `CSE6`: SID 101–120 (20 students)
+   - `CSE7`: SID 121–138 (18 students)
+2. **Removed False G1/G2 Whole-Batch Mapping**:
+   The artificial checkbox mapping table has been permanently removed from the UI. The application now displays the exact SID ranges and overlapping division structure directly.
+3. **Automatic Conflict Prevention**:
+   Because `G2` encompasses SIDs 70–138 and `CSE7` encompasses SIDs 121–138, they intersect on 18 students. The CP-SAT solver natively enforces that `G2` lectures and `CSE7` tutorials never overlap, cleanly resolving the Tuesday 15:00 potential clash without requiring administrative manual mappings.
 
 ---
 
-### 2.3 Co-Instructors & Multi-Faculty Constraint Satisfaction
+### 2.3 Authoritative SID-Based Student Identity Model & Set-Union Strengths
+
+Student cohorts across the institution are modeled with program-namespaced student identifiers (`CSE:SID:x`, `AI:SID:y`, `DS:SID:z`):
+- **CSE Core**: 138 students (`CSE:SID:1` to `CSE:SID:138`)
+- **CSE (AI)**: 30 students (`AI:SID:1` to `AI:SID:30`)
+- **CSE (Data Science)**: 60 students (`DS:SID:1` to `DS:SID:60`)
+- **Campus Total**: **228 distinct students**. Namespacing guarantees that `CSE:SID:1` and `AI:SID:1` represent different individuals and never produce false cross-department clashes.
+
+#### Set-Union Strength Calculation
+Course student strengths are dynamically calculated as the cardinality of the set union of student identifiers:
+$$\text{total\_student\_strength} = \left| \bigcup_{d \in \text{divisions}(e)} \text{SIDs}(d) \right|$$
+
+This eliminates inflated counts across all views and CSV exports:
+- **CSE G1 Lecture**: 69 students (not 240)
+- **CSE G2 Lecture**: 69 students (not 180)
+- **CSE1 + CSE2 Tutorial / Practical**: 40 students
+- **CSE1 + CSE2 + CSE3 + CSE4 Practical**: 80 students
+- **CSE Shared Lecture (CSM1003)**: 138 students (not 420)
+- **CSE7 Practical / Tutorial**: 18 students (not 60)
+- **AI1 Practical**: 15 students (not 45)
+- **AI Shared Lecture (AIN / AIM1003)**: 30 students (not 90)
+- **DS2 + DS3 Practical**: 30 students
+- **DS Shared Lecture (DSN / DSM1003)**: 60 students (not 200)
+
+#### Solver & Validator SID Conflict Constraint
+Two events in the same department cannot be scheduled concurrently if their student sets overlap:
+$$\forall s \in \text{Campus SIDs}, \forall d \in \text{Days}, \forall p \in \text{Periods}: \sum_{e: s \in \text{student\_ids}(e)} A_{e, d, p} \le 1$$
+
+---
+
+### 2.4 Co-Instructors & Multi-Faculty Constraint Satisfaction
 
 Real university courses frequently utilize co-teaching and lab supervision teams:
 - `CSN5001 Theory of Computation (Tutorial)`: Dr. Sandeep Harit + Dr. Ravpreet (CSE1+2, CSE3+4, CSE5+6, CSE7).
@@ -137,9 +157,9 @@ Following Software Engineering best practices, the validation engine distinguish
 | **Room Clashes** | **Passed (Verified)** | Zero venues double-booked across all 91 scheduled sessions. |
 | **Duration & Lunch Break** | **Passed (Verified)** | Multi-period sessions are contiguous and never cross 13:00–14:00 lunch break. |
 | **Simultaneous Bundles** | **Passed (Verified)** | Multi-room practicals allocate all required rooms concurrently. |
-| **G1 / G2 Section Conflicts** | **Unverified / Verified** | Marked **Unverified** with warnings until admin maps sections; upgrades to **Passed** upon mapping. |
+| **Student Clashes (SID Ranges)** | **Passed (SID-verified)** | Program-namespaced SIDs guarantee 0 student clashes; G2 and CSE7 never overlap. |
 | **Room Capacities** | **Unverified** | Source timetable does not specify seating capacity numbers. Handled as transparent warning notices instead of inventing fake capacities. |
-| **Overall Status** | **VALIDATED WITH WARNINGS** | Transparently displayed whenever unverified constraints exist; upgrades to **FULLY VALIDATED** when all checks and mappings are verified. |
+| **Overall Status** | **VALIDATED WITH WARNINGS** | Transparently displayed whenever unverified constraints exist; upgrades to **FULLY VALIDATED** when room capacities are confirmed. |
 
 ---
 
@@ -147,6 +167,7 @@ Following Software Engineering best practices, the validation engine distinguish
 
 | Metric / Dimension | Previous Release | Corrected Dataset | Justification for Change |
 | :--- | :---: | :---: | :--- |
+| **Total Distinct Students** | 680 (inflated sum) | **228 (Distinct SIDs)** | CSE: 138, AI: 30, DS: 60 with non-overlapping set-union calculations. |
 | **Total Course Offerings** | 62 | **54** | Excluded 8 dummy/unsupported non-venue offerings. |
 | **Total Weekly Sessions** | 107 | **91** | Removed 16 phantom events (15 self-directed projects + 1 incomplete entry). |
 | **• CSE Weekly Sessions** | 59 | **43** | Correct venue-backed CSE sessions (25 offerings). |

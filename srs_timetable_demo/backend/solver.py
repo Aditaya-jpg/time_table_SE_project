@@ -23,6 +23,7 @@ from .models import (
     Room,
     TimeSlotConfig,
     ValidationReport,
+    get_course_student_ids,
 )
 
 
@@ -35,6 +36,7 @@ class EventInstance:
         course: Course,
         session_index: int,
         student_strength: int,
+        student_ids: Set[str],
         section_ids: List[str],
         section_names: List[str],
         group_id: Optional[str],
@@ -46,6 +48,7 @@ class EventInstance:
         self.course = course
         self.session_index = session_index
         self.student_strength = student_strength
+        self.student_ids = student_ids
         self.section_ids = section_ids
         self.section_names = section_names
         self.group_id = group_id
@@ -165,30 +168,25 @@ def solve_timetable(data: TimetableData, time_limit_seconds: float = 20.0) -> So
         if not fac_names and course.faculty_id:
             fac_names = [course.faculty_id]
 
-        # Determine section / group membership
+        # Determine student identities and strength via authoritative SID ranges
+        student_ids = get_course_student_ids(course)
+        strength = len(student_ids)
+
+        # Labels for display
         group_id = course.group_id
         group_name = None
         resolved_sec_ids: List[str] = []
         resolved_sec_names: List[str] = []
-        strength = 0
 
-        if group_id and group_id in group_dict:
-            grp = group_dict[group_id]
-            group_name = grp.name
-            if grp.section_ids:
-                # Group is mapped to actual sections
-                resolved_sec_ids = list(grp.section_ids)
-                resolved_sec_names = [section_dict[sid].name for sid in resolved_sec_ids if sid in section_dict]
-                strength = sum(section_dict[sid].strength for sid in resolved_sec_ids if sid in section_dict)
-            else:
-                # Group is unmapped - treat group ID as abstract section token to prevent intra-group clash
-                resolved_sec_ids = [group_id]
-                resolved_sec_names = [f"{grp.name} (Unmapped Group)"]
-                strength = 0
+        if group_id:
+            group_name = "G1" if "G1" in group_id else ("G2" if "G2" in group_id else group_id)
+            resolved_sec_ids = [group_id]
+            resolved_sec_names = [f"Group {group_name}"]
         else:
             resolved_sec_ids = list(course.section_ids)
             resolved_sec_names = [section_dict[sid].name for sid in resolved_sec_ids if sid in section_dict]
-            strength = sum(section_dict[sid].strength for sid in resolved_sec_ids if sid in section_dict)
+            if not resolved_sec_names and course.section_ids:
+                resolved_sec_names = course.section_ids
 
         for session_idx in range(1, course.sessions_per_week + 1):
             evt_id = f"{course.id}_S{session_idx}"
@@ -198,6 +196,7 @@ def solve_timetable(data: TimetableData, time_limit_seconds: float = 20.0) -> So
                     course=course,
                     session_index=session_idx,
                     student_strength=strength,
+                    student_ids=student_ids,
                     section_ids=resolved_sec_ids,
                     section_names=resolved_sec_names,
                     group_id=group_id,
@@ -384,24 +383,24 @@ def solve_timetable(data: TimetableData, time_limit_seconds: float = 20.0) -> So
                     if len(active_for_fac) > 1:
                         model.Add(sum(active_for_fac) <= 1)
 
-    # --- HARD CONSTRAINT 2 & 10: Student Section Conflict Prevention & CourseGroup Mapping ---
-    # Collect all unique section identifiers (including group IDs)
-    all_section_tokens: Set[str] = set()
+    # --- HARD CONSTRAINT 2 & 10: Student Conflict Prevention via Exact SID Ranges ---
+    all_student_ids: Set[str] = set()
     for ev in events:
-        all_section_tokens.update(ev.section_ids)
+        all_student_ids.update(ev.student_ids)
 
-    for sec_token in all_section_tokens:
-        sec_events = [ev for ev in events if sec_token in ev.section_ids]
-        if len(sec_events) > 1:
+    for s_id in all_student_ids:
+        # Find all events in which student s_id participates
+        student_events = [ev for ev in events if s_id in ev.student_ids]
+        if len(student_events) > 1:
             for d in range(num_days):
                 for p_curr in range(num_periods):
-                    active_for_sec = [
+                    active_for_student = [
                         A[(ev.event_id, d, p_curr)]
-                        for ev in sec_events
+                        for ev in student_events
                         if (ev.event_id, d, p_curr) in A
                     ]
-                    if len(active_for_sec) > 1:
-                        model.Add(sum(active_for_sec) <= 1)
+                    if len(active_for_student) > 1:
+                        model.Add(sum(active_for_student) <= 1)
 
     # --- HARD CONSTRAINT 3 & 4: Room & Laboratory Conflict Prevention ---
     for r in data.rooms:
